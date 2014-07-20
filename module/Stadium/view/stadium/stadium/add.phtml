@@ -1,0 +1,20 @@
+<?php
+// module/Album/view/album/album/add.phtml:
+
+$title = 'Add new stadium';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('stadium', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('title')).'<br/>';
+echo $this->formRow($form->get('address')).'<br/>';
+echo $this->formRow($form->get('info')).'<br/>';
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+
