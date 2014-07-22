@@ -116,4 +116,15 @@ class StadiumController extends AbstractActionController
         }
         return $this->stadiumTable;
     }
+
+
+    public function itemAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+
+        return new ViewModel(array(
+            'stadium' => $this->getStadiumTable()->getStadium($id),
+        ));
+    }
+
 }

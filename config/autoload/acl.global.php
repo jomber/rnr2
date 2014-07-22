@@ -125,6 +125,7 @@ return array(
 //	STADIUM ACL
 				'Stadium\Controller\Stadium' => array(
 					'index'   => 'guest',
+					'item'	=> 'guest',
 					'add'	=> 'guest',
 					'edit'  => 'admin',	
 					'delete'=> 'admin',
