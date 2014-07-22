@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 20, 2014 at 09:20 AM
+-- Generation Time: Jul 22, 2014 at 03:24 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -45,6 +45,31 @@ INSERT INTO `album` (`id`, `artist`, `title`) VALUES
 (5, 'Gotye', 'Making  Mirrors'),
 (6, 'Nirvana', 'Nevermind'),
 (7, 'Nirvana', 'In Utero');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `colour` int(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `title`, `colour`) VALUES
+(1, 'Restaurants', 0),
+(2, 'Hotels', 0),
+(3, 'Parks', 1),
+(4, 'Libraries', 2),
+(5, 'Cinemas', 23),
+(6, 'Stadiums', 0);
 
 -- --------------------------------------------------------
 
@@ -145,8 +170,8 @@ CREATE TABLE `resource` (
 
 CREATE TABLE `review` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `itemid` int(5) NOT NULL,
-  `cathegory` varchar(30) NOT NULL,
+  `itemid` int(11) NOT NULL,
+  `categoryid` int(11) NOT NULL,
   `rating` int(1) NOT NULL,
   `comments` text NOT NULL,
   `reviewedby` int(5) NOT NULL,
@@ -154,15 +179,17 @@ CREATE TABLE `review` (
   `photo` varchar(10) NOT NULL,
   `publish` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `reviewedby_idx` (`reviewedby`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  KEY `reviewedby_idx` (`reviewedby`),
+  KEY `categoryid_idx` (`categoryid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`id`, `itemid`, `cathegory`, `rating`, `comments`, `reviewedby`, `reviewdate`, `photo`, `publish`) VALUES
-(1, 1, 'stadiums', 5, 'Good one', 1, '0000-00-00 00:00:00', '', 0);
+INSERT INTO `review` (`id`, `itemid`, `categoryid`, `rating`, `comments`, `reviewedby`, `reviewdate`, `photo`, `publish`) VALUES
+(1, 1, 1, 5, 'Good one', 1, '0000-00-00 00:00:00', '', 0),
+(2, 1, 6, 5, 'Amazing Stuff', 1, '2014-01-01 00:00:00', '', 0);
 
 -- --------------------------------------------------------
 
@@ -223,23 +250,27 @@ CREATE TABLE `stadium` (
   `disabledaccess` int(1) DEFAULT NULL,
   `website` varchar(41) DEFAULT NULL,
   `info` varchar(671) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `categoryid` int(11) NOT NULL DEFAULT '6',
+  `latitude` varchar(11) DEFAULT NULL,
+  `longitude` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryid_idx` (`categoryid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `stadium`
 --
 
-INSERT INTO `stadium` (`id`, `title`, `address`, `suburb`, `telephone`, `email`, `disabledaccess`, `website`, `info`) VALUES
-(1, 'Metricon Stadium', 'Nerang - Broadbeach Road\nCarrara QLD 4211', 'Nerang ', ' (07) 5644 6200', '', 1, 'http://www.metriconstadium.com.au/', 'Metricon Stadium has been jointly funded by the Queensland Government ($71.9m), Commonwealth Government ($36m), Gold Coast City Council ($23m) and the AFL ($13.3m) and is a multipurpose facility that currently seats 25,000 spectators and will be capable of being extended to 40,000 seats in the future. Metricon Stadium features an AFL oval that will also be capable of holding ICC cricket matches, concerts, festivals, IAAF athletics events and FIFA World Cup soccer matches.'),
-(2, 'The Gabba', 'Gate 7 Vulture Street\nWoolloongabba QLD 4102', 'Woolloongabba', '1300 843 422', 'info@thegabba.com.au', 1, 'http://www.thegabba.com.au/', 'The Gabba is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland.'),
-(3, 'Sleeman Sports Complex', 'Cnr Old Cleveland & Tilley Roads\nChandler Qld 4155', 'Chandler ', '(07) 07 3131 9620', 'info@sleemansports.com.au', 1, 'http://www.sleemansports.com.au/', 'Sleeman Sports Complex is one of eight major sporting and entertainment facilities owned and operated by Stadiums Queensland.'),
-(4, 'QSAC', 'Kessels Road\nNathan QLD 4111', 'Nathan', '(07) 3405 7511', '', 1, 'http://www.qsac.com.au/', 'QSAC is one of eight major sporting and entertainment facilities owned and operated by Stadiums Queensland.'),
-(5, '1300SMILES Stadium', 'Golf Links Drive\nKIRWAN  QLD  4817', 'Kirwan', '(07) 4722 7700', 'info@1300smilesstadium.com.au', 1, 'http://www.1300smilesstadium.com.au/', '1300SMILES Stadium is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland. Stadiums Queensland (SQ) has been established by the Queensland Government to manage, operate and promote the use of the State'),
-(6, 'Cbus Super Stadium', 'Cbus Super Stadium\nCentreline Place\nRobina   QLD   4226', 'Robina', '(07) 5656 5500', ' info@cbussuperstadium.com.au', 1, 'http://www.cbussuperstadium.com.au/', 'Cbus Super Stadium is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland.'),
-(7, 'Suncorp Stadium', '40 Castlemaine St. Milton QLD 4064', 'Milton', '(07) 3331 5000', 'info@suncorpstadium.com.au', 1, 'http://www.suncorpstadium.com.au/', 'Suncorp Stadium provides Brisbane and south-east Queensland with a 52,500 plus seat capacity, state-of-the art, world-class stadium able to accommodate a range of uses including:\n\nRugby League '),
-(8, 'Brisbane Entertainment Centre', 'Melaleuca Drive\nBoondall QLD 4034', 'Boondall', '(07) 3265 8111 ', 'bec@brisent.com.au', 1, 'http://www.brisent.com.au/', 'The Brisbane Entertainment Centre (BEC) is located in Boondall, a Brisbane City suburb, in Queensland, Australia. It is managed by AEG Ogden.\r\n\r\nThe arena has an array of seating plans which facilitate the comfort of its users, subject to performance. Specific seating plans are usually allocated, depending on the performance and the size of its audience.'),
-(9, 'Queensland Tennis Centre', '190 King Arthur Terrace\nTennyson, QLD 4105', 'Tennyson', '(07) 3214 3800', '', 1, 'http://www.queenslandtenniscentre.com.au/', 'Tennis in Queensland is set to be bigger, brighter and more spectacular than ever with the advent of the Queensland Tennis Centre. Set on the banks of the iconic Brisbane River at Tennyson, the $82 million state-of-the-art facility includes:\n\nPat Rafter Arena ');
+INSERT INTO `stadium` (`id`, `title`, `address`, `suburb`, `telephone`, `email`, `disabledaccess`, `website`, `info`, `categoryid`, `latitude`, `longitude`) VALUES
+(1, 'Metricon Stadium', 'Nerang - Broadbeach Road\nCarrara QLD 4211', 'Nerang ', ' (07) 5644 6200', '', 1, 'http://www.metriconstadium.com.au/', 'Metricon Stadium has been jointly funded by the Queensland Government ($71.9m), Commonwealth Government ($36m), Gold Coast City Council ($23m) and the AFL ($13.3m) and is a multipurpose facility that currently seats 25,000 spectators and will be capable of being extended to 40,000 seats in the future. Metricon Stadium features an AFL oval that will also be capable of holding ICC cricket matches, concerts, festivals, IAAF athletics events and FIFA World Cup soccer matches.', 6, '-28.005422', '153.367148'),
+(2, 'The Gabba', 'Gate 7 Vulture Street\nWoolloongabba QLD 4102', 'Woolloongabba', '1300 843 422', 'info@thegabba.com.au', 1, 'http://www.thegabba.com.au/', 'The Gabba is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland.', 6, '-27.485548', '153.038090'),
+(3, 'Sleeman Sports Complex', 'Cnr Old Cleveland & Tilley Roads\nChandler Qld 4155', 'Chandler ', '(07) 07 3131 9620', 'info@sleemansports.com.au', 1, 'http://www.sleemansports.com.au/', 'Sleeman Sports Complex is one of eight major sporting and entertainment facilities owned and operated by Stadiums Queensland.', 6, NULL, NULL),
+(4, 'QSAC', 'Kessels Road\nNathan QLD 4111', 'Nathan', '(07) 3405 7511', '', 1, 'http://www.qsac.com.au/', 'QSAC is one of eight major sporting and entertainment facilities owned and operated by Stadiums Queensland.', 6, NULL, NULL),
+(5, '1300SMILES Stadium', 'Golf Links Drive\nKIRWAN  QLD  4817', 'Kirwan', '(07) 4722 7700', 'info@1300smilesstadium.com.au', 1, 'http://www.1300smilesstadium.com.au/', '1300SMILES Stadium is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland. Stadiums Queensland (SQ) has been established by the Queensland Government to manage, operate and promote the use of the State', 6, NULL, NULL),
+(6, 'Cbus Super Stadium', 'Cbus Super Stadium\nCentreline Place\nRobina   QLD   4226', 'Robina', '(07) 5656 5500', ' info@cbussuperstadium.com.au', 1, 'http://www.cbussuperstadium.com.au/', 'Cbus Super Stadium is one of nine major sporting and entertainment facilities owned and operated by Stadiums Queensland.', 6, NULL, NULL),
+(7, 'Suncorp Stadium', '40 Castlemaine St. Milton QLD 4064', 'Milton', '(07) 3331 5000', 'info@suncorpstadium.com.au', 1, 'http://www.suncorpstadium.com.au/', 'Suncorp Stadium provides Brisbane and south-east Queensland with a 52,500 plus seat capacity, state-of-the art, world-class stadium able to accommodate a range of uses including:\n\nRugby League ', 6, NULL, NULL),
+(8, 'Brisbane Entertainment Centre', 'Melaleuca Drive\nBoondall QLD 4034', 'Boondall', '(07) 3265 8111 ', 'bec@brisent.com.au', 1, 'http://www.brisent.com.au/', 'The Brisbane Entertainment Centre (BEC) is located in Boondall, a Brisbane City suburb, in Queensland, Australia. It is managed by AEG Ogden.\r\n\r\nThe arena has an array of seating plans which facilitate the comfort of its users, subject to performance. Specific seating plans are usually allocated, depending on the performance and the size of its audience.', 6, NULL, NULL),
+(9, 'Queensland Tennis Centre', '190 King Arthur Terrace\nTennyson, QLD 4105', 'Tennyson', '(07) 3214 3800', '', 1, 'http://www.queenslandtenniscentre.com.au/', 'Tennis in Queensland is set to be bigger, brighter and more spectacular than ever with the advent of the Queensland Tennis Centre. Set on the banks of the iconic Brisbane River at Tennyson, the $82 million state-of-the-art facility includes:\n\nPat Rafter Arena ', 6, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -320,11 +351,24 @@ ALTER TABLE `privilege`
   ADD CONSTRAINT `FK_87209A87D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 
 --
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`reviewedby`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`);
+
+--
 -- Constraints for table `roles_parents`
 --
 ALTER TABLE `roles_parents`
   ADD CONSTRAINT `FK_C70E6B91727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `role` (`id`),
   ADD CONSTRAINT `FK_C70E6B91D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
+
+--
+-- Constraints for table `stadium`
+--
+ALTER TABLE `stadium`
+  ADD CONSTRAINT `stadium_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`);
 
 --
 -- Constraints for table `user`
