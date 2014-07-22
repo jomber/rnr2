@@ -1,6 +1,6 @@
 <div class="jumbotron">
 
-	<a class="btn btn-success pull-left" href="./../" ><i class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
+	<a class="btn btn-success btn-lg pull-left" href="./../" ><i class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
 	<br/>
 
 	<?php
@@ -9,18 +9,31 @@
 	?>
 	<h1><?php echo $this->escapeHtml($title); ?></h1>
 
-	<img src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $this->escapeHtml($stadium->title);?>" />
-	<br/>
-	
+
+  <img src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $this->escapeHtml($stadium->title);?>" />
+  <br/>
+
+   <?php echo $this->escapeHtml($stadium->address);?>
+  <br/>
+  <?php echo $this->escapeHtml($stadium->telephone);?>
+  <br/>
+  <?php echo $this->escapeHtml($stadium->email);?>
+  <br/>
+  <?php echo $this->escapeHtml($stadium->website);?>
+  <br/>
+
+
 	<?php echo $this->escapeHtml($stadium->info);?>
 	<br/>
 
 
 
+<h2>User reviews:</h2>
 	<!-- Button trigger modal REVIEW -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#modalReview<?php echo $this->escapeHtml($stadium->id);?>">
-  <i class="fa fa-pencil fa-1x"></i> Post Review
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalReview<?php echo $this->escapeHtml($stadium->id);?>">
+  <i class="fa fa-pencil fa-2x"></i> Post Review
 </button>
+<br/>
 
 <!-- Modal INFO -->
 <div class="modal fade bs-example-modal-lg" id="modalInfo<?php echo $this->escapeHtml($stadium->id);?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -186,6 +199,24 @@
     echo "!!!";
   }
 ?>
+
+
+
+
+<br/>
+<!-- LIST OF REVIEWS -->
+<?php foreach ($reviews as $review) : ?>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <?php echo $this->escapeHtml($review->comments);?>
+  </div>
+</div>
+
+<?php endforeach; ?>
+
+
+
 
 </div>
 

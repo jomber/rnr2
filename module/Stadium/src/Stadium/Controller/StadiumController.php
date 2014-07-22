@@ -5,6 +5,9 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Stadium\Model\Stadium;
 use Stadium\Form\StadiumForm;
+use Review\Model\Review;
+use Review\Form\ReviewForm;
+
 
 class StadiumController extends AbstractActionController
 {
@@ -117,6 +120,15 @@ class StadiumController extends AbstractActionController
         return $this->stadiumTable;
     }
 
+        public function getReviewTable()
+    {
+        if (!$this->reviewTable) {
+            $sm = $this->getServiceLocator();
+            $this->reviewTable = $sm->get('Stadium\Model\ReviewTable');
+        }
+        return $this->reviewTable;
+    }
+
 
     public function itemAction()
     {
@@ -124,6 +136,7 @@ class StadiumController extends AbstractActionController
 
         return new ViewModel(array(
             'stadium' => $this->getStadiumTable()->getStadium($id),
+            'reviews' => $this->getReviewTable()->fetchAll(),
         ));
     }
 

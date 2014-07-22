@@ -11,6 +11,9 @@ class Stadium implements InputFilterAwareInterface
     public $id;
     public $title;
     public $address;
+    public $telephone;
+    public $email;
+    public $website;
     public $info;
     protected $inputFilter;
 
@@ -19,6 +22,9 @@ class Stadium implements InputFilterAwareInterface
         $this->id     = (isset($data['id'])) ? $data['id'] : null;
         $this->title = (isset($data['title'])) ? $data['title'] : null;
         $this->address  = (isset($data['address'])) ? $data['address'] : null;
+        $this->telephone  = (isset($data['telephone'])) ? $data['telephone'] : null;
+        $this->email  = (isset($data['email'])) ? $data['email'] : null;
+        $this->website  = (isset($data['website'])) ? $data['website'] : null;
         $this->info  = (isset($data['info'])) ? $data['info'] : null;
     }
 
@@ -62,6 +68,63 @@ class Stadium implements InputFilterAwareInterface
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'address',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'telephone',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,s
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'email',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'website',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),

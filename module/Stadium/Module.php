@@ -3,6 +3,9 @@ namespace Stadium;
 
 use Stadium\Model\Stadium;
 use Stadium\Model\StadiumTable;
+use Stadium\Model\Review;
+use Stadium\Model\ReviewTable;
+
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -42,6 +45,17 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Stadium());
                     return new TableGateway('stadium', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Stadium\Model\ReviewTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ReviewTableGateway');
+                    $table = new ReviewTable($tableGateway);
+                    return $table;
+                },
+                'ReviewTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Review());
+                    return new TableGateway('review', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
