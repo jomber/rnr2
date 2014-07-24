@@ -17,7 +17,7 @@ class ReviewTable
         $resultSet = $this->tableGateway->select();
         return $resultSet;
     }
-/*
+
     public function getReview($id)
     {
         $id  = (int) $id;
@@ -28,7 +28,7 @@ class ReviewTable
         }
         return $row;
     }
-
+/*
     public function saveReview(Review $review)
     {
         $data = array(

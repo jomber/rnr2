@@ -17,14 +17,28 @@
   <br/>
   <?php echo $this->escapeHtml($stadium->telephone);?>
   <br/>
-  <?php echo $this->escapeHtml($stadium->email);?>
-  <br/>
+
+<?php 
+
+$email = $this->escapeHtml($stadium->email);
+
+if($email != '')
+{
+  echo $email.'<br/>';
+}
+
+?>
+
+  
   <?php echo $this->escapeHtml($stadium->website);?>
   <br/>
 
 
 	<?php echo $this->escapeHtml($stadium->info);?>
 	<br/>
+
+
+
 
 
 
@@ -35,34 +49,7 @@
 </button>
 <br/>
 
-<!-- Modal INFO -->
-<div class="modal fade bs-example-modal-lg" id="modalInfo<?php echo $this->escapeHtml($stadium->id);?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo $this->escapeHtml($stadium->title);?></h4>
-      </div>
-      <div class="modal-body">
 
-
-      <h1> <?php echo $this->escapeHtml($stadium->title);?> </h1>
-
-      <img src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $this->escapeHtml($stadium->title);?>" />
-
-      <h3> <?php echo $this->escapeHtml($stadium->address);?> </h3>
-
-      <?php echo $this->escapeHtml($stadium->info);?>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END Modal INFO -->
 
 
 <!-- Modal REVIEW -->
@@ -81,17 +68,31 @@
       <h2> Post review </h2>
 
 
-<!-- RATING -->
-<div class="star-rating"> 
-  <span class="fa fa-thumbs-o-up fa-3x" data-rating="1"></span>
-  <span class="fa fa-thumbs-o-up fa-3x" data-rating="2"></span>
-  <span class="fa fa-thumbs-o-up fa-3x" data-rating="3"></span>
-  <span class="fa fa-thumbs-o-up fa-3x" data-rating="4"></span>
-  <span class="fa fa-thumbs-o-up fa-3x" data-rating="5"></span>
-  <input type="hidden" name="whatever" class="rating-value" value="3">
-</div>
 
+<!-- RATING -->
+<?php
+   $up = 5;
+    $down = 5 - $up;
+
+    for ($t=$up; $t>0; $t--) 
+    {
+      echo "<input type='radio' name=$up value=$up>";
+
+    for ($i=$up; $i>0; $i--) 
+    {
+      echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+    }
+    echo '<br>';
+$up=$up-1;
+  }
+?>
 <!-- END RATING -->
+
+
+
+
+
+
 
       <textarea class="form-control" rows="3"></textarea>
 
@@ -110,7 +111,7 @@
     <!-- Drop down menu to select Geolocation or Suburb -->
     <select id="ratingDd" name="ratingDd">
       <option value="0"></option>
-      <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+      <option value="1"><i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i></option>
       <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
       <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
       <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
@@ -207,14 +208,45 @@
 <!-- LIST OF REVIEWS -->
 <?php foreach ($reviews as $review) : ?>
 
+<?php  
+if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ) && ($this->escapeHtml($review->categoryid) == $this->escapeHtml($stadium->categoryid) ))
+{
+?>
+
 <div class="panel panel-default">
   <div class="panel-body">
+
+    <!-- PRINT OUT THUMBS UP RATING -->
+    <?php 
+    $up = $this->escapeHtml($review->rating);
+    $down = 5 - $up;
+
+    for ($i=1; $i<=$up; $i++) {
+      echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+    }
+
+
+    for ($i=1; $i<=$down; $i++) {
+      echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+    }
+    ?>
+  <!-- END PRINT OUT THUMBS UP RATING -->
+
+  <br/>
+
+    <?php echo $this->escapeHtml($review->reviewedby);?>
+    <?php echo $this->escapeHtml($review->reviewdate);?>
     <?php echo $this->escapeHtml($review->comments);?>
+
   </div>
 </div>
 
-<?php endforeach; ?>
+<?php
+}
+?>
 
+<?php endforeach; ?>
+<!-- END LIST OF REVIEWS -->
 
 
 

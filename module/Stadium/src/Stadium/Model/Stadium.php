@@ -9,6 +9,7 @@ use Zend\InputFilter\InputFilterInterface;
 class Stadium implements InputFilterAwareInterface
 {
     public $id;
+    public $categoryid;   
     public $title;
     public $address;
     public $telephone;
@@ -20,6 +21,7 @@ class Stadium implements InputFilterAwareInterface
     public function exchangeArray($data)
     {
         $this->id     = (isset($data['id'])) ? $data['id'] : null;
+        $this->categoryid = (isset($data['categoryid'])) ? $data['categoryid'] : null;
         $this->title = (isset($data['title'])) ? $data['title'] : null;
         $this->address  = (isset($data['address'])) ? $data['address'] : null;
         $this->telephone  = (isset($data['telephone'])) ? $data['telephone'] : null;
@@ -44,6 +46,25 @@ class Stadium implements InputFilterAwareInterface
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'Int'),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'categoryid',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
+                    ),
                 ),
             )));
 

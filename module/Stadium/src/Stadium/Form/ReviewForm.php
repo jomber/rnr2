@@ -14,6 +14,7 @@ class ReviewForm extends Form
             'name' => 'id',
             'type' => 'Hidden',
         ));
+
         $this->add(array(
             'name' => 'comments',
             'type' => 'Text',
@@ -21,6 +22,8 @@ class ReviewForm extends Form
                 'label' => 'Title',
             ),
         ));
+
+
 /*        $this->add(array(
             'name' => 'address',
             'type' => 'Text',

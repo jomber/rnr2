@@ -136,7 +136,13 @@ class StadiumController extends AbstractActionController
 
         return new ViewModel(array(
             'stadium' => $this->getStadiumTable()->getStadium($id),
+         //   'reviews' => $this->getReviewTable()->getReview($id1),
             'reviews' => $this->getReviewTable()->fetchAll(),
+
+       // $user = $this->getEntityManager()->createQuery("SELECT u FROM CsnUser\Entity\User u WHERE u.email = '$usernameOrEmail' OR u.username = '$usernameOrEmail'")->getResult(\Doctrine\ORM\Query::HYDRATE_OBJECT);
+  
+
+
         ));
     }
 
