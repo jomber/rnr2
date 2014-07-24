@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 22, 2014 at 03:24 PM
+-- Generation Time: Jul 24, 2014 at 06:39 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -181,7 +181,7 @@ CREATE TABLE `review` (
   PRIMARY KEY (`id`),
   KEY `reviewedby_idx` (`reviewedby`),
   KEY `categoryid_idx` (`categoryid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `review`
@@ -189,7 +189,8 @@ CREATE TABLE `review` (
 
 INSERT INTO `review` (`id`, `itemid`, `categoryid`, `rating`, `comments`, `reviewedby`, `reviewdate`, `photo`, `publish`) VALUES
 (1, 1, 1, 5, 'Good one', 1, '0000-00-00 00:00:00', '', 0),
-(2, 1, 6, 5, 'Amazing Stuff', 1, '2014-01-01 00:00:00', '', 0);
+(2, 1, 6, 5, 'Amazing Stuff', 1, '2014-01-01 00:00:00', '', 0),
+(3, 2, 6, 4, 'Pretty Good', 1, '2014-01-01 00:00:00', '', 1);
 
 -- --------------------------------------------------------
 
@@ -255,7 +256,7 @@ CREATE TABLE `stadium` (
   `longitude` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categoryid_idx` (`categoryid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `stadium`
@@ -354,8 +355,8 @@ ALTER TABLE `privilege`
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`reviewedby`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`);
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`reviewedby`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `roles_parents`
