@@ -219,7 +219,17 @@ if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ) && 
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <!-- PRINT OUT THUMBS UP RATING -->
+
+
+
+ <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="<?php echo $this->basePath('img/userIcon.png') ?>" alt="...">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">Reviewed by: <?php echo $this->escapeHtml($review->reviewedby);?></h4>
+
+          <!-- PRINT OUT THUMBS UP RATING -->
     <?php 
     $up = $this->escapeHtml($review->rating);
     $down = 5 - $up;
@@ -233,13 +243,18 @@ if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ) && 
       echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
     }
     ?>
+    <br/>
   <!-- END PRINT OUT THUMBS UP RATING -->
-
-  <br/>
-
-    <?php echo $this->escapeHtml($review->reviewedby);?>
+      
+    
     <?php echo $this->escapeHtml($review->reviewdate);?>
     <?php echo $this->escapeHtml($review->comments);?>
+
+
+    </div>
+  </li>
+
+
 
   </div>
 </div>
