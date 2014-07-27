@@ -12,6 +12,7 @@ use Review\Form\ReviewForm;
 class StadiumController extends AbstractActionController
 {
     protected $stadiumTable;
+    protected $reviewTable;
 
     public function indexAction()
     {
@@ -138,10 +139,7 @@ class StadiumController extends AbstractActionController
             'stadium' => $this->getStadiumTable()->getStadium($id),
          //   'reviews' => $this->getReviewTable()->getReview($id1),
             'reviews' => $this->getReviewTable()->fetchAll(),
-
-       // $user = $this->getEntityManager()->createQuery("SELECT u FROM CsnUser\Entity\User u WHERE u.email = '$usernameOrEmail' OR u.username = '$usernameOrEmail'")->getResult(\Doctrine\ORM\Query::HYDRATE_OBJECT);
-  
-
+          //  'reviews' => $this->getReviewTable()->getReviews(),
 
         ));
     }

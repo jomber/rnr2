@@ -6,6 +6,9 @@ return array(
         'Application',
         'Stadium',
         
+        'ZendDeveloperTools',
+        'BjyProfiler',
+        
         'DoctrineModule',
         'DoctrineORMModule',
         'CsnUser',
