@@ -101,6 +101,16 @@ text-align: center;
 color: white;
 }
 
+.panel-body {
+font-size: 14pt;
+}
+
+.badge {
+font-size: 14pt;
+background-color: #70d900;
+
+}
+
 
 .star-rating {
   line-height:32px;
@@ -162,6 +172,11 @@ END YOUTUBE CONTAINER
 */
 }
 
+.media-object {
+
+  max-height: 100px;
+  max-width: 100px;
+}
 
 
 

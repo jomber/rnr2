@@ -1,5 +1,5 @@
 <div class="row">
-  
+
   <?php
 // module/Stadium/view/stadium/stadium/index.phtml:
 
@@ -22,15 +22,19 @@
 
       <div class="panel-body">
 
-       <p><a href="<?php echo $this->url('stadium', array('action'=>'item', 'id' => $stadium->id));?>"><img class="imageBox" src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $stadium->title ?>"/></a></p>
+        <!-- ADMIN OPTIONS -->
+    <!--    <a href="<?php echo $this->url('stadium',
+        array('action'=>'edit', 'id' => $stadium->id));?>"><i class="fa fa-edit fa-2x"></i></a>
+        <a href="<?php echo $this->url('stadium',
+        array('action'=>'delete', 'id' => $stadium->id));?>"><i class="fa fa-times fa-2x"></i></a>
+        <!-- END ADMIN OPTIONS -->
+
+<p><a href="<?php echo $this->url('stadium', array('action'=>'item', 'id' => $stadium->id));?>"><img class="imageBox" src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $stadium->title ?>"/></a></p>
+
+Reviews: <span class="badge">42</span>
+Rating: <span class="badge">4.3</span>
 
 
-       <a href="<?php echo $this->url('stadium',
-       array('action'=>'edit', 'id' => $stadium->id));?>"><i class="fa fa-edit fa-2x"></i></a>
-<a href="<?php echo $this->url('stadium',
-array('action'=>'delete', 'id' => $stadium->id));?>"><i class="fa fa-times fa-2x"></i></a>
-
-<a href="#">Reviewedby: <span class="badge">42</span></a>
 
 </div>
 </div>
