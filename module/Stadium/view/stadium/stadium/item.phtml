@@ -167,7 +167,7 @@
   </div>
   <!-- END Modal REVIEW -->
 
-  <?php 
+  <?php /*
   function postReview($itemid, $rating, $comments, $reviewedby, $date)
   {
     try  
@@ -193,7 +193,7 @@
     }
     echo "!!!";
   }
-  ?>
+  */ ?>
 
 
 
@@ -203,7 +203,7 @@
   <?php foreach ($reviews as $review) : ?>
 
   <?php  
-  if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ) && ($this->escapeHtml($review->categoryid) == $this->escapeHtml($stadium->categoryid) ))
+  if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ))
   {
     ?>
 

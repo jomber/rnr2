@@ -9,6 +9,13 @@ use Review\Model\Review;
 use Review\Form\ReviewForm;
 
 
+use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Select;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Sql;
+
+
 class StadiumController extends AbstractActionController
 {
     protected $stadiumTable;
@@ -131,15 +138,26 @@ class StadiumController extends AbstractActionController
     }
 
 
+        public function getUserTable()
+    {
+        if (!$this->userTable) {
+            $sm = $this->getServiceLocator();
+            $this->userTable = $sm->get('Stadium\Model\UserTable');
+        }
+        return $this->userTable;
+    }
+
+
     public function itemAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
+        $categoryid = 6;
 
         return new ViewModel(array(
             'stadium' => $this->getStadiumTable()->getStadium($id),
-         //   'reviews' => $this->getReviewTable()->getReview($id1),
-            'reviews' => $this->getReviewTable()->fetchAll(),
-          //  'reviews' => $this->getReviewTable()->getReviews(),
+            'reviews' => $this->getReviewTable()->getCatReview($categoryid),
+   //        'users' => $this->getUserTable()->fetchAll(),
+
 
         ));
     }
