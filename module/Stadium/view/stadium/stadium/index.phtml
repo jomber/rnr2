@@ -31,9 +31,21 @@
 
 <p><a href="<?php echo $this->url('stadium', array('action'=>'item', 'id' => $stadium->id));?>"><img class="imageBox" src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $stadium->title ?>"/></a></p>
 
-Reviews: <span class="badge">42</span>
-Rating: <span class="badge">4.3</span>
 
+<!-- COUNT OF REVIEWS -->
+<!--  <?php foreach ($reviews as $review) : ?>
+	$count = 0;
+  <?php  
+  if( ($this->escapeHtml($review->itemid) == $this->escapeHtml($stadium->id) ))
+  {
+  	$count++;
+  }
+   endforeach;
+?>
+<!-- END COUNT OF REVIEWS -->
+
+Reviews:<span class="badge"><?php echo $this->escapeHtml($stadium->id); ?></span><br/>
+Rating:<span class="badge">5.2</span>
 
 
 </div>
