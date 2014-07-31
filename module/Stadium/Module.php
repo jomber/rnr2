@@ -3,8 +3,8 @@ namespace Stadium;
 
 use Stadium\Model\Stadium;
 use Stadium\Model\StadiumTable;
-use Stadium\Model\Review;
-use Stadium\Model\ReviewTable;
+//use Stadium\Model\Review;
+//use Stadium\Model\ReviewTable;
 use Stadium\Model\User;
 use Stadium\Model\UserTable;
 
@@ -48,7 +48,7 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new Stadium());
                     return new TableGateway('stadium', $dbAdapter, null, $resultSetPrototype);
                 },
-                'Stadium\Model\ReviewTable' =>  function($sm) {
+                /*'Stadium\Model\ReviewTable' =>  function($sm) {
                     $tableGateway = $sm->get('ReviewTableGateway');
                     $table = new ReviewTable($tableGateway);
                     return $table;
@@ -58,7 +58,7 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Review());
                     return new TableGateway('review', $dbAdapter, null, $resultSetPrototype);
-                },
+                },*/
 
                 'Stadium\Model\UserTable' =>  function($sm) {
                     $tableGateway = $sm->get('UserTableGateway');

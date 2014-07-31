@@ -122,7 +122,7 @@ return array(
 					'view'	=> 'admin',					
 				),
 
-//	STADIUM ACL
+				//	STADIUM ACL
 				'Stadium\Controller\Stadium' => array(
 					'index'   => 'guest',
 					'item'	=> 'guest',
@@ -131,10 +131,30 @@ return array(
 					'delete'=> 'admin',
 
 				),
-//	END STADIUM ACL
+				//	END STADIUM ACL
 
-
-
+				//	Review ACL
+				'Review\Controller\Review' => array(
+						'index'   => 'guest',
+						'item'	=> 'guest',
+						'add'	=> 'guest',
+						'edit'  => 'admin',
+						'delete'=> 'admin',
+				
+				),
+				//	END Review ACL
+				
+				//TODO (need to be fixed)
+				//	User ACL  
+				'User\Controller\User' => array(
+						'index'   => 'guest',
+						'item'	=> 'guest',
+						'add'	=> 'guest',
+						'edit'  => 'admin',
+						'delete'=> 'admin',
+				
+				),
+				//	END User ACL
 
             ),
             'deny' => array(

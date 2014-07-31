@@ -1,13 +1,14 @@
 <?php
 namespace Stadium\Controller;
 
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Stadium\Model\Stadium;
 use Stadium\Form\StadiumForm;
 use Review\Model\Review;
 use Review\Form\ReviewForm;
-
+use Review\Controller;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Select;
@@ -20,6 +21,7 @@ class StadiumController extends AbstractActionController
 {
     protected $stadiumTable;
     protected $reviewTable;
+    protected $userTable;
 
     public function indexAction()
     {
@@ -128,21 +130,21 @@ class StadiumController extends AbstractActionController
         return $this->stadiumTable;
     }
 
-        public function getReviewTable()
+    public function getReviewTable()
     {
         if (!$this->reviewTable) {
             $sm = $this->getServiceLocator();
-            $this->reviewTable = $sm->get('Stadium\Model\ReviewTable');
+            $this->reviewTable = $sm->get('Review\Model\ReviewTable');
         }
         return $this->reviewTable;
     }
 
 
-        public function getUserTable()
+   public function getUserTable()
     {
         if (!$this->userTable) {
             $sm = $this->getServiceLocator();
-            $this->userTable = $sm->get('Stadium\Model\UserTable');
+            $this->userTable = $sm->get('User\Model\UserTable');
         }
         return $this->userTable;
     }
@@ -152,13 +154,10 @@ class StadiumController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $categoryid = 6;
-
+        
         return new ViewModel(array(
             'stadium' => $this->getStadiumTable()->getStadium($id),
-            'reviews' => $this->getReviewTable()->getCatReview($categoryid),
-   //        'users' => $this->getUserTable()->fetchAll(),
-
-
+        	'reviewsByItem' => $this->getReviewTable()->getReviewByCategoryIdem($categoryid, $id),
         ));
     }
 

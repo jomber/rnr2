@@ -5,10 +5,12 @@ return array(
 
         'Application',
         'Stadium',
-        
+        'Review',
+    	'User',
+    	
+    	
         'ZendDeveloperTools',
         'BjyProfiler',
-        
         'DoctrineModule',
         'DoctrineORMModule',
         'CsnUser',
