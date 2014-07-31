@@ -1,0 +1,26 @@
+<?php
+
+$title = 'Reviews';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+   
+</p>
+  
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Comments</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($reviews as $review) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($review->getId());?></td>
+    <td><?php echo $this->escapeHtml($review->getComments());?></td>
+    <td>
+        
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
