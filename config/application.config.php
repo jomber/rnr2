@@ -8,14 +8,14 @@ return array(
         'Review',
     	'User',
     	
-    	
         'ZendDeveloperTools',
         'BjyProfiler',
         'DoctrineModule',
         'DoctrineORMModule',
         'CsnUser',
         'CsnAuthorization',
-        'CsnAclNavigation',
+        'CsnAclNavigation',    	
+
 
         
     ),

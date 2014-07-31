@@ -55,12 +55,10 @@ return array(
 				'CsnUser\Controller\Registration' => array(
 					'index'	=> 'guest',
 					'changePassword' => 'member',
-//					'editProfile' => 'member',
 					'edit-profile' => 'member',
-					'changeEmail' => 'member',
-//					'forgottenPassword' => 'guest',
+					'change-email' => 'member',
 					'reset-password' => 'guest',
-					'confirmEmail' => 'guest',
+					'confirm-email'=> 'guest',
 					'registrationSuccess' => 'guest',
 				),
 				'CsnUser\Controller\Index' => array(
