@@ -25,8 +25,11 @@ class StadiumController extends AbstractActionController
 
     public function indexAction()
     {
+    	$categoryid = 6;
+    	
         return new ViewModel(array(
             'stadiums' => $this->getStadiumTable()->fetchAll(),
+      //		'stadiums' => $this->getStadiumTable()->getStadiumsRev($categoryid),
         ));
     }
 

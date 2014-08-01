@@ -2,6 +2,9 @@
 namespace Stadium\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Where;
+use Zend\Db\Sql\Sql;
+use Zend\Db\Sql\Select;
 
 class StadiumTable
 {
@@ -28,7 +31,23 @@ class StadiumTable
         }
         return $row;
     }
-
+    
+ /*   
+    public function getStadiumsRev($categoryId)
+    {
+    	$categoryId  = (int) $categoryId;
+    	
+      	$select = new Select() ;
+    	 $select->from('stadium');
+    	$select->columns(array('id','title'));
+    	$select->join('review', "review.itemid = stadium.id", array('id'), 'left');
+    	$select->where(array('categoryid' => $categoryId));
+    	
+    	$resultSet = $this->tableGateway->selectWith($select);
+    	
+    	return $resultSet;
+    }
+*/
     public function saveStadium(Stadium $stadium)
     {
         $data = array(
