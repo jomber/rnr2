@@ -27,6 +27,32 @@
   ; ?>
 
 
+  <!-- MOBILE APP SUPPORT -->
+
+    <!-- iOS mobile app support -->
+    <script type="text/javascript">$(document).ready(function() {$('#jclock').jclock();});</script>
+    <!-- Define the icon for mobile sevice home screen -->
+    <link rel="apple-touch-icon" href="./img/iconApp.png"/>
+    <!-- Splash screen -->
+    <link rel="apple-touch-startup-image" href="./img/iconApp.png" />
+    <!-- Make the Application Full Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Status bar style -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- Setting the Viewport -->
+    <meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />
+    <meta name="viewport" content = "width = device-width, initial-scale = 2.3, minimum-scale = 1, maximum-scale = 5" />
+    <!-- END iOS mobile app support -->
+
+    <!-- Android mobile app support -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Define the icon for mobile sevice home screen -->
+    <link rel="icon" sizes="196x196" href="./img/iconApp.png">
+    <!-- END Android mobile app support -->
+
+  <!-- END MOBILE APP SUPPORT -->
+
 </head>
 <body>
 
@@ -52,7 +78,7 @@
   <div class="item">
     <img src="http://rnr2.roveandrave.com.au/public/img/adv/adv2.png" alt="...">
     <div class="carousel-caption">
-     <a class="btn btn-info pull-right" href="about" target="_blank" ><?php echo $this->translate('More Info')?> &raquo;</a>
+     <a id="advBtn" class="btn btn-info pull-right" href="about" target="_blank" ><?php echo $this->translate('More Info')?> &raquo;</a>
    </div>
  </div>
 
@@ -92,7 +118,7 @@
 
 
       <!-- SOCIAL MEDIA BUTTONS -->
-      <div class="btn-group pull-right">
+      <div id="socMedBtn" class="btn-group pull-right">
         <a class="btn btn-primary pull-left" href="https://www.facebook.com/endeavourfoundation" target="_blank" ><i class="fa fa-facebook-square fa-3x"></i></a>
         <a class="btn btn-danger pull-right" href="https://www.youtube.com/user/EndeavourFoundation" target="_blank" ><i class="fa fa-youtube-square fa-3x"></i></a>
       </div>

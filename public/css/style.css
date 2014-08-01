@@ -206,22 +206,32 @@ END YOUTUBE CONTAINER
 }
 */
 
+/* Design for the screen width less than 1000 pixels */
+@media screen and (max-width: 1000px) {
 
+    #leftCol, #carouselControls, #advBtn {
+    display: none;
+  }
+}
 
 
 @media only screen and (max-device-width: 480px) {
 
   #carouselControls {
-    visibility: hidden;
+    display: none;
   }
 
 
     .carousel {
-      visibility: hidden;
-
+      display: none;
     }
-    #leftCol {
-    visibility: hidden;
+
+    #socMedBtn {
+    
+  }
+
+    #leftCol, #sponsorDiv {
+    display: none;
   }
 
   }
