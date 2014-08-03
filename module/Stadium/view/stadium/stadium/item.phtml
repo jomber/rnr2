@@ -1,74 +1,82 @@
-<div class="jumbotron">
+	<div class="jumbotron">
 
-	<a class="btn btn-success btn-lg pull-left" href="./../"><i
-		class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
-
-	<br />
-
-
-	<?php
-	$title = $this->escapeHtml ( $stadium->title );
-	$this->headTitle ( $title );
-	?>
-	<h1><?php echo $this->escapeHtml($title); ?></h1>
+		<h1><a class="btn btn-primary btn-lg pull-left" href="./../"><i
+			class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
+			<?php
+			echo '&nbsp';
+			$title = $this->escapeHtml ( $stadium->title );
+			$this->headTitle ( $title );
+			?>
+			<?php echo $this->escapeHtml($title); ?></h1>
+			<br/>
 
 
-	<div class="row">
-		<div id="back1" class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-			<!-- STADIUM CONTACT DETAILS -->
-			<img
+			<!-- ITEM INFORMATION -->
+			<div id="itemInfo" class="panel panel-default">
+				<!-- <h2>Information:</h2> -->
+				<img class="itemLogo" align="left"
 				src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>"
-				alt="<?php echo $this->escapeHtml($stadium->title);?>" /> <br />
+				alt="<?php echo $this->escapeHtml($stadium->title);?>" />
 
-  <?php echo $this->escapeHtml($stadium->address);?>
-  <br />
-  <?php echo $this->escapeHtml($stadium->telephone);?>
-  <br />
-
-  <?php
-		
-		$email = $this->escapeHtml ( $stadium->email );
-		
-		if ($email != '') {
-			echo $email . '<br/>';
-		}
-		
-		?>  
-  <?php echo $this->escapeHtml($stadium->website);?>
-  <!-- END STADIUM CONTACT DETAILS -->
-		</div>
-		<div id="back1" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-			<!-- GOOGLE MAPS -->
-  <?php $address = $this->escapeHtml($stadium->address); ?>
-
-  <iframe id="gm" frameborder="0" scrolling="no" marginheight="0"
-				marginwidth="0"
-				src="https://maps.google.com/maps?q=<?php echo $this->escapeHtml($address); ?>&amp;ie=UTF8&amp;hq=&amp;
-  hnear=<?php echo $this->escapeHtml($address); ?>&amp;t=m&amp;z=15&amp;output=embed"></iframe>
-
-			<!-- END GOOGLE MAPS -->
-		</div>
-	</div>
-	
-
-  <?php echo $this->escapeHtml($stadium->info);?>
-  <br />
+				<?php echo $this->escapeHtml($stadium->info);?>
+			</div>
+			<!-- END ITEM INFORMATION -->
 
 
 
-	<h2>User reviews:</h2>
-	<!-- Button trigger modal REVIEW -->
-	<button class="btn btn-primary btn-lg" data-toggle="modal"
-		data-target="#modalReview<?php echo $this->escapeHtml($stadium->id);?>">
-		<i class="fa fa-pencil fa-2x"></i> Post Review
-	</button>
-	<br />
+			<div class="row">
+				<div id="back1" class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+					<!-- STADIUM CONTACT DETAILS -->
+					<div id="itemInfo" class="panel panel-default">
+						<h2>Contact Details:</h2>
+
+						<?php echo "<strong>Address:</strong><br/>".$this->escapeHtml($stadium->address);?>
+						<br />
+						<?php echo "<strong>Phone:</strong><br/>".$this->escapeHtml($stadium->telephone);?>
+						<br />
+
+						<?php	
+						$email = $this->escapeHtml ( $stadium->email );
+						
+						if ($email != '') {
+							echo "<strong>Email:</strong><br/>".$email . '<br/>';
+						}
+						
+						?>  
+						<?php echo "<strong>Web-site:</strong><br/>".$this->escapeHtml($stadium->website);?>
+					</div>
+					<!-- END STADIUM CONTACT DETAILS -->
+				</div>
+				<div id="back1" class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+					<!-- GOOGLE MAPS -->
+					<?php $address = $this->escapeHtml($stadium->address); ?>
+
+					<iframe id="gm" frameborder="0" scrolling="no" marginheight="0"
+					marginwidth="0"
+					src="https://maps.google.com/maps?q=<?php echo $this->escapeHtml($title).$this->escapeHtml($address); ?>&amp;ie=UTF8&amp;hq=&amp;
+					hnear=<?php echo $this->escapeHtml($title).$this->escapeHtml($address); ?>&amp;t=m&amp;z=15&amp;output=embed"></iframe>
+
+					<!-- END GOOGLE MAPS -->
+				</div>
+			</div>
+			
+
+
+
+			<p>
+				<h2>User reviews:</h2>
+				<!-- Button trigger modal REVIEW -->
+				<button class="btn btn-primary btn-lg" data-toggle="modal"
+				data-target="#modalReview<?php echo $this->escapeHtml($stadium->id);?>">
+				<i class="fa fa-pencil fa-2x"></i> Post Review
+			</button>
+		</p>
 
 
 
 
-	<!-- Modal REVIEW -->
-	<div class="modal fade bs-example-modal-lg"
+		<!-- Modal REVIEW -->
+		<div class="modal fade bs-example-modal-lg"
 		id="modalReview<?php echo $this->escapeHtml($stadium->id);?>"
 		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">
@@ -87,139 +95,139 @@
 
 
 					<!-- RATING -->
-					<!--          <?php
-					$up = 5;
-					$down = 5 - $up;
-					
-					for($t = $up; $t > 0; $t --) {
-						echo "<input type='radio' name=$up value=$up>";
+						<!--          <?php
+						$up = 5;
+						$down = 5 - $up;
 						
-						for($i = $up; $i > 0; $i --) {
-							echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+						for($t = $up; $t > 0; $t --) {
+							echo "<input type='radio' name=$up value=$up>";
+							
+							for($i = $up; $i > 0; $i --) {
+								echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+							}
+							echo '<br>';
+							$up = $up - 1;
 						}
-						echo '<br>';
-						$up = $up - 1;
-					}
-					?>
--->
+						?>
+					-->
 
 
 
 					<input type="radio" name="5" value="5">
-          <?php
-										
-for($i = 1; $i <= 5; $i ++) {
-											echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-										}
-										echo ' <b>Very Good</b><br>';
-										?>
+					<?php
+					
+					for($i = 1; $i <= 5; $i ++) {
+						echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+					}
+					echo ' <b>Very Good</b><br>';
+					?>
 
-          <input type="radio" name="4" value="4">
-          <?php
-										for($i = 1; $i <= 4; $i ++) {
-											echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-										}
-										for($i = 1; $i <= 1; $i ++) {
-											echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
-										}
-										echo ' <b>Good</b><br>';
-										?>
+					<input type="radio" name="4" value="4">
+					<?php
+					for($i = 1; $i <= 4; $i ++) {
+						echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+					}
+					for($i = 1; $i <= 1; $i ++) {
+						echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+					}
+					echo ' <b>Good</b><br>';
+					?>
 
-          <input type="radio" name="3" value="3">
-          <?php
-										for($i = 1; $i <= 3; $i ++) {
-											echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-										}
-										for($i = 1; $i <= 2; $i ++) {
-											echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
-										}
-										echo ' <b>Satisfactory</b><br>';
-										?>
+					<input type="radio" name="3" value="3">
+					<?php
+					for($i = 1; $i <= 3; $i ++) {
+						echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+					}
+					for($i = 1; $i <= 2; $i ++) {
+						echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+					}
+					echo ' <b>Satisfactory</b><br>';
+					?>
 
-          <input type="radio" name="2" value="2">
-          <?php
-										for($i = 1; $i <= 2; $i ++) {
-											echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-										}
-										for($i = 1; $i <= 3; $i ++) {
-											echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
-										}
-										echo ' <b>Bad</b><br>';
-										?>
+					<input type="radio" name="2" value="2">
+					<?php
+					for($i = 1; $i <= 2; $i ++) {
+						echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+					}
+					for($i = 1; $i <= 3; $i ++) {
+						echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+					}
+					echo ' <b>Bad</b><br>';
+					?>
 
-          <input type="radio" name="1" value="1">
-          <?php
-										for($i = 1; $i <= 1; $i ++) {
-											echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-										}
-										for($i = 1; $i <= 4; $i ++) {
-											echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
-										}
-										echo ' <b>Very Bad</b>';
-										?>
-          <br /> <br />
+					<input type="radio" name="1" value="1">
+					<?php
+					for($i = 1; $i <= 1; $i ++) {
+						echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+					}
+					for($i = 1; $i <= 4; $i ++) {
+						echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+					}
+					echo ' <b>Very Bad</b>';
+					?>
+					<br /> <br />
 
 
 
 					<!-- END RATING -->
 
 					<textarea class="form-control" rows="5" autofocus
-						placeholder="Write comments..."></textarea>
+					placeholder="Write comments..."></textarea>
 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success btn-lg">
 						<i class="fa fa-check fa-2x"></i><?php echo $this->translate(' POST')?></button>
-					<button type="button" class="btn btn-danger btn-lg"
+						<button type="button" class="btn btn-danger btn-lg"
 						data-dismiss="modal">
 						<i class="fa fa-times fa-2x"></i><?php echo $this->translate(' CANCEL')?></button>
 
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- END Modal REVIEW -->
+		<!-- END Modal REVIEW -->
 
-  <?php 
-/*
-						       * function postReview($itemid, $rating, $comments, $reviewedby, $date) { try { $stmt = $pdo->prepare( 'INSERT INTO review (itemid, rating, comments, reviewedby, reviewdate) VALUES (:revieweditemid, :rating, :comments, :reviewedby, :reviewdate)' ); $stmt->bindValue(':itemid', $itemid); $stmt->bindValue(':rating', $rating); $stmt->bindValue(':comments', $comments); $stmt->bindValue(':reviewedby', $reviewedby); $stmt->bindValue(':reviewdate', $date); $stmt->execute(); } catch (PDOException $e) { echo $e->getMessage(); } echo "!!!"; }
-						       */
-		?>
+		<?php 
+	/*
+							       * function postReview($itemid, $rating, $comments, $reviewedby, $date) { try { $stmt = $pdo->prepare( 'INSERT INTO review (itemid, rating, comments, reviewedby, reviewdate) VALUES (:revieweditemid, :rating, :comments, :reviewedby, :reviewdate)' ); $stmt->bindValue(':itemid', $itemid); $stmt->bindValue(':rating', $rating); $stmt->bindValue(':comments', $comments); $stmt->bindValue(':reviewedby', $reviewedby); $stmt->bindValue(':reviewdate', $date); $stmt->execute(); } catch (PDOException $e) { echo $e->getMessage(); } echo "!!!"; }
+							       */
+	?>
 
-  <br />
+	<br />
 
 	<!-- LIST OF REVIEWS -->
-  <?php foreach ($reviewsByItem as $review) : ?>
+	<?php foreach ($reviewsByItem as $review) : ?>
 
-    <div class="panel panel-default">
+	<div class="panel panel-default">
 		<div class="panel-body">
 			<li class="media"><a class="pull-left" href="#"> <img
-					class="media-object"
-					src="<?php echo $this->basePath('img/userIcon.png') ?>" alt="...">
+				class="media-object"
+				src="<?php echo $this->basePath('img/userIcon.png') ?>" alt="...">
 			</a>
-				<div class="media-body">
-					<h4 class="media-heading">Reviewed by: <?php echo $this->escapeHtml($review->getFirstName()); ?></h4>
+			<div class="media-body">
+				<h4 class="media-heading">Reviewed by: <?php echo $this->escapeHtml($review->getFirstName()); ?></h4>
 
-					<!-- PRINT OUT THUMBS UP RATING -->
-          <?php
-			$up = $this->escapeHtml ( $review->getRating () );
-			$down = 5 - $up;
-			
-			for($i = 1; $i <= $up; $i ++) {
-				echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
-			}
-			
-			for($i = 1; $i <= $down; $i ++) {
-				echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
-			}
-			?>
-          <br />
-					<!-- END PRINT OUT THUMBS UP RATING -->
+				<!-- PRINT OUT THUMBS UP RATING -->
+				<?php
+				$up = $this->escapeHtml ( $review->getRating () );
+				$down = 5 - $up;
+				
+				for($i = 1; $i <= $up; $i ++) {
+					echo '<i class="fa fa-thumbs-up fa-2x" style="color: #70d900;"></i>';
+				}
+				
+				for($i = 1; $i <= $down; $i ++) {
+					echo '<i class="fa fa-thumbs-down fa-2x" style="color: #d9534f;"></i>';
+				}
+				?>
+				<br />
+				<!-- END PRINT OUT THUMBS UP RATING -->
 
-          <?php echo $this->escapeHtml($review->getReviewdate());?>
-          <?php echo $this->escapeHtml($review->getComments());?>
+				<?php echo $this->escapeHtml($review->getReviewdate());?>
+				<?php echo $this->escapeHtml($review->getComments());?>
 
-        </div></li>
+			</div></li>
 
 
 
@@ -231,5 +239,4 @@ for($i = 1; $i <= 5; $i ++) {
 <!-- END LIST OF REVIEWS -->
 
 </div>
-
 
