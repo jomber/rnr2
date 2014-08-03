@@ -22,6 +22,7 @@
   <?php echo $this->headScript()
   ->prependFile($this->basePath() . '/js/bootstrap.min.js')
   ->prependFile($this->basePath() . '/js/jquery.min.js')
+  ->prependFile($this->basePath() . '/js/scripts.js')
   ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
   ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
   ; ?>
@@ -177,20 +178,20 @@
 <div class="col-md-3" id="leftCol">
 
   <ul class="nav nav-stacked" id="sidebar">
-    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-search-minus fa-3x"></i></a></li>
-    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-circle-o fa-3x"></i></a></li>
-    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-search-plus fa-3x"></i></a></li>
+    <li><a href="#" onClick="changeFontSize('-1')"><i class="fa fa-search-minus fa-3x"></i></a></li>
+    <li><a href="#" onClick="changeFontSize(0)"><i class="fa fa-circle-o fa-3x"></i></a></li>
+    <li><a href="#" onClick="changeFontSize('1')"><i class="fa fa-search-plus fa-3x"></i></a></li>
     <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-volume-up fa-3x"></i></a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">COLOUR <span class="caret"></span></a>
-      <ul class="dropdown-menu" role="menu">
-        <li style="color: red; background-color:yellow;"><a href="#">Dropdown link</a></li>
-        <li style="color: blue;"><a href="#">Dropdown link</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+      <ul class="dropdown-menu" style="font-size: 20px;" role="menu">
+        <li style="color: red; background-color:#edde45;"><a href="#">Yellow</a></li>
+        <li style="color: blue; background-color:#a8dba8;"><a href="#">Green</a></li>
+        <li style="color: blue; background-color:#9bf0e9;"><a href="#">Blue</a></li>
+        <li style="color: blue; background-color:#ea3556;"><a href="#">Red</a></li>
       </ul>
 
-    </div>
+</div>
 
     <!-- END LEFT SETTINGS BAR --> 
 
