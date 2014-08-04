@@ -7,8 +7,9 @@ return array(
         'Stadium',
         'Review',
     	'User',
+        'Admin',
     	
-        'ZendDeveloperTools',
+     //   'ZendDeveloperTools',
         'BjyProfiler',
         'DoctrineModule',
         'DoctrineORMModule',

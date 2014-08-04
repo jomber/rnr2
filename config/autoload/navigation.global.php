@@ -32,6 +32,23 @@ return array(
 				 'privilege' => 'faq',
              ),
 
+            array(
+                 'label' => '<i class="fa fa-fax fa-2x"></i>'.' CONTACT',
+                 'route' => 'contact',
+                 'resource' => 'Application\Controller\Index',
+                 'privilege' => 'contact',
+             ),
+
+            array(
+               //  'label' => '<i class="fa fa-pied-piper-alt fa-2x"></i>'.' ADMIN',
+            	 'label' => '<i class="fa fa-cog fa-spin fa-2x"></i>'.' ADMIN',
+                 'route' => 'adm',
+				 'controller' => 'Admin',
+				 'action'     => 'index',
+				 'resource'	  => 'Admin\Controller\Admin',
+				 'privilege'  => 'index',
+             ),
+
 			 array(
                  'label' => '<i class="fa fa-sign-in fa-2x"></i>'.' LOGIN',
                  'route' => 'user-index', 

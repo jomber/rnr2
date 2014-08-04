@@ -105,6 +105,7 @@ return array(
 					'index'   => 'guest',
 					'about'   => 'guest',
 					'faq'   => 'guest',
+					'contact'   => 'guest',
 				),
 				// for CMS articles
                                 'all' => array(
@@ -153,6 +154,13 @@ return array(
 				
 				),
 				//	END User ACL
+
+				//	Admin ACL  
+				'Admin\Controller\Admin' => array(
+						'index'   => 'admin',
+
+				),
+				//	END Admin ACL
 
             ),
             'deny' => array(
