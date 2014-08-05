@@ -1,54 +1,84 @@
-<div class="jumbotron">
+	<div class="jumbotron">
 
-	<a class="btn btn-success btn-lg pull-left" href="./../" ><i class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
-	<br/>
-
-
-	<?php
-	$title = $this->escapeHtml($stadium->title);
-	$this->headTitle($title);
-	?>
-	<h1><?php echo $this->escapeHtml($title); ?></h1>
+<fs>
 
 
-  <img src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>" alt="<?php echo $this->escapeHtml($stadium->title);?>" />
-  <br/>
-
-  <?php echo $this->escapeHtml($stadium->address);?>
-  <br/>
-  <?php echo $this->escapeHtml($stadium->telephone);?>
-  <br/>
-
-  <?php 
-
-  $email = $this->escapeHtml($stadium->email);
-
-  if($email != '')
-  {
-    echo $email.'<br/>';
-  }
-
-  ?>
-
-  
-  <?php echo $this->escapeHtml($stadium->website);?>
-  <br/>
+		<h1><a class="btn btn-primary btn-lg pull-left" href="./../"><i
+			class="fa fa-arrow-left fa-2x"></i><?php echo $this->translate(' BACK')?></a>
+			<?php
+				echo '&nbsp';
+				$title = $this->escapeHtml ( $stadium->title );
+				$this->headTitle ( $title );
+			?>
+			<?php echo $this->escapeHtml($title); ?></h1>
+			<br/>
 
 
-  <?php echo $this->escapeHtml($stadium->info);?>
-  <br/>
+			<!-- ITEM INFORMATION -->
+			<div id="itemInfo" class="panel panel-default">
+				<!-- <h2>Information:</h2> -->
+				<img class="itemLogo" align="left"
+				src="<?php echo $this->basePath('img/stadium/'.$stadium->id.'.png') ?>"
+				alt="<?php echo $this->escapeHtml($stadium->title);?>" />
+
+				<?php echo $this->escapeHtml($stadium->info);?>
+			</div>
+			<!-- END ITEM INFORMATION -->
 
 
 
+			<div class="row">
+				<div id="back1" class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+					<!-- STADIUM CONTACT DETAILS -->
+					<div id="itemInfo" class="panel panel-default">
+						<h2>Contact Details:</h2>
+
+						<?php echo "<strong>Address:</strong><br/>".$this->escapeHtml($stadium->address);?>
+						<br />
+						<?php echo "<strong>Phone:</strong><br/>".$this->escapeHtml($stadium->telephone);?>
+						<br />
+
+						<?php	
+						$email = $this->escapeHtml ( $stadium->email );
+						
+						if ($email != '') {
+							echo "<strong>Email:</strong><br/>".$email . '<br/>';
+						}
+						
+						?>  
+						<?php echo "<strong>Web-site:</strong><br/>".$this->escapeHtml($stadium->website);?>
+					</div>
+					<!-- END STADIUM CONTACT DETAILS -->
+				</div>
+				<div id="back1" class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+					<!-- GOOGLE MAPS -->
+					<?php $address = $this->escapeHtml($stadium->address); ?>
+
+					<iframe id="gm" frameborder="0" scrolling="no" marginheight="0"
+					marginwidth="0"
+					src="https://maps.google.com/maps?q=<?php echo $this->escapeHtml($title).$this->escapeHtml($address); ?>&amp;ie=UTF8&amp;hq=&amp;
+					hnear=<?php echo $this->escapeHtml($title).$this->escapeHtml($address); ?>&amp;t=m&amp;z=15&amp;output=embed"></iframe>
+
+					<!-- END GOOGLE MAPS -->
+				</div>
+			</div>
 
 
 
+
+	
+
+
+
+
+
+<p>
   <h2>User reviews:</h2>
   <!-- Button trigger modal REVIEW -->
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalReview<?php echo $this->escapeHtml($stadium->id);?>">
     <i class="fa fa-pencil fa-2x"></i> Post Review
   </button>
-  <br/>
+</p>  
 
 
 
@@ -148,6 +178,7 @@
 <?php endforeach; ?>
 <!-- END LIST OF REVIEWS -->
  
+ </fs>
 </div>
 
 
