@@ -192,19 +192,19 @@ class StadiumController extends AbstractActionController
     	$averageString = "";
     	switch ($average) {
     		case 1:
-    			$averageString = "/img/icons/VeryBad.png";
+    			$averageString = "/rnr2/public/img/icons/VeryBad.png";
     			return $averageString;
     		case 2:
-    			$averageString = "/img/icons/Bad.png";
+    			$averageString = "/rnr2/public/img/icons/Bad.png";
     			return $averageString;
     		case 3:
-    			$averageString = "/img/icons/Satisfactory.png";
+    			$averageString = "/rnr2/public/img/icons/Satisfactory.png";
     			return $averageString;
     		case 4:
-    			$averageString = "/img/icons/Good.png";
+    			$averageString = "/rnr2/public/img/icons/Good.png";
     			return $averageString;
     		case 5:
-    			$averageString = "/img/icons/VeryGood.png";
+    			$averageString = "/rnr2/public/img/icons/VeryGood.png";
     			return $averageString;
     		default:
     			return "";
