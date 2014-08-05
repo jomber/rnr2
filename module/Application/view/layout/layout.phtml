@@ -13,6 +13,7 @@
   <!-- Le styles -->
   <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
   ->prependStylesheet($this->basePath() . '/css/style.css')
+  ->prependStylesheet($this->basePath() . '/css/elements.css')
   ->prependStylesheet($this->basePath() . '/css/CsnUser.css')
   ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
   ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
@@ -22,37 +23,10 @@
   <?php echo $this->headScript()
   ->prependFile($this->basePath() . '/js/bootstrap.min.js')
   ->prependFile($this->basePath() . '/js/jquery.min.js')
-  ->prependFile($this->basePath() . '/js/scripts.js')
   ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
   ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
   ; ?>
 
-
-  <!-- MOBILE APP SUPPORT -->
-
-    <!-- iOS mobile app support -->
-    <script type="text/javascript">$(document).ready(function() {$('#jclock').jclock();});</script>
-    <!-- Define the icon for mobile sevice home screen -->
-    <link rel="apple-touch-icon" href="./img/iconApp.png"/>
-    <!-- Splash screen -->
-    <link rel="apple-touch-startup-image" href="./img/iconApp.png" />
-    <!-- Make the Application Full Screen -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- Status bar style -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!-- Setting the Viewport -->
-    <meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />
-    <meta name="viewport" content = "width = device-width, initial-scale = 2.3, minimum-scale = 1, maximum-scale = 5" />
-    <!-- END iOS mobile app support -->
-
-    <!-- Android mobile app support -->
-    <meta name="viewport" content="width=device-width">
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- Define the icon for mobile sevice home screen -->
-    <link rel="icon" sizes="196x196" href="./img/iconApp.png">
-    <!-- END Android mobile app support -->
-
-  <!-- END MOBILE APP SUPPORT -->
 
 </head>
 <body>
@@ -79,7 +53,7 @@
   <div class="item">
     <img src="http://rnr2.roveandrave.com.au/public/img/adv/adv2.png" alt="...">
     <div class="carousel-caption">
-     <a id="advBtn" class="btn btn-info pull-right" href="about" target="_blank" ><?php echo $this->translate('More Info')?> &raquo;</a>
+     <a class="btn btn-info pull-right" href="about" target="_blank" ><?php echo $this->translate('More Info')?> &raquo;</a>
    </div>
  </div>
 
@@ -119,7 +93,7 @@
 
 
       <!-- SOCIAL MEDIA BUTTONS -->
-      <div id="socMedBtn" class="btn-group pull-right">
+      <div class="btn-group pull-right">
         <a class="btn btn-primary pull-left" href="https://www.facebook.com/endeavourfoundation" target="_blank" ><i class="fa fa-facebook-square fa-3x"></i></a>
         <a class="btn btn-danger pull-right" href="https://www.youtube.com/user/EndeavourFoundation" target="_blank" ><i class="fa fa-youtube-square fa-3x"></i></a>
       </div>
@@ -178,20 +152,20 @@
 <div class="col-md-3" id="leftCol">
 
   <ul class="nav nav-stacked" id="sidebar">
-    <li><a href="#" onClick="changeFontSize('-1')"><i class="fa fa-search-minus fa-3x"></i></a></li>
-    <li><a href="#" onClick="changeFontSize(0)"><i class="fa fa-circle-o fa-3x"></i></a></li>
-    <li><a href="#" onClick="changeFontSize('1')"><i class="fa fa-search-plus fa-3x"></i></a></li>
+    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-search-minus fa-3x"></i></a></li>
+    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-circle-o fa-3x"></i></a></li>
+    <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-search-plus fa-3x"></i></a></li>
     <li><a href="<?php echo $this->url('home') ?>"><i class="fa fa-volume-up fa-3x"></i></a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">COLOUR <span class="caret"></span></a>
-      <ul class="dropdown-menu" style="font-size: 20px;" role="menu">
-        <li style="color: red; background-color:#edde45;"><a href="#">Yellow</a></li>
-        <li style="color: blue; background-color:#a8dba8;"><a href="#">Green</a></li>
-        <li style="color: blue; background-color:#9bf0e9;"><a href="#">Blue</a></li>
-        <li style="color: blue; background-color:#ea3556;"><a href="#">Red</a></li>
+      <ul class="dropdown-menu" role="menu">
+        <li style="color: red; background-color:yellow;"><a href="#">Dropdown link</a></li>
+        <li style="color: blue;"><a href="#">Dropdown link</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
       </ul>
 
-</div>
+    </div>
 
     <!-- END LEFT SETTINGS BAR --> 
 
