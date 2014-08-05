@@ -8,6 +8,7 @@ return array(
         'Review',
     	'User',
         'Admin',
+        'Query',
     	
      //   'ZendDeveloperTools',
         'BjyProfiler',

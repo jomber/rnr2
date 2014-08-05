@@ -18,6 +18,17 @@ class AdminController extends AbstractActionController
     	));
     }
 
+    public function queryAction()
+    {
+        return new ViewModel(array(
+                'queries' => $this->getQueryTable()->fetchAll(),
+        ));
+    }
+
+
+
+
+
     public function addAction()
     {
     }
@@ -46,6 +57,15 @@ class AdminController extends AbstractActionController
     		$this->reviewTable = $sm->get('Review\Model\ReviewTable');
     	}
     	return $this->reviewTable;
+    }
+
+    public function getQueryTable()
+    {
+        if (!$this->queryTable) {
+            $sm = $this->getServiceLocator();
+            $this->queryTable = $sm->get('Admin\Model\QueryTable');
+        }
+        return $this->reviewTable;
     }
     
     

@@ -162,6 +162,14 @@ return array(
 				),
 				//	END Admin ACL
 
+				//	Admin ACL  
+				'Query\Controller\Query' => array(
+						'index'   => 'guest',
+						'add'   => 'guest',
+
+				),
+				//	END Admin ACL
+
             ),
             'deny' => array(
                                 'CsnUser\Controller\Index' => array(

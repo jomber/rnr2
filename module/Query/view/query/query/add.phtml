@@ -1,0 +1,67 @@
+<div class="jumbotron">
+
+	<fs>
+
+
+			<!-- CONTACT DETAILS -->		
+			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+				<strong>Australia Phone (Free):</strong> 1800 63 40 40<br/>
+				<strong>Australia Fax:</strong> 1800 62 40 09<br/>
+				<strong>New Zealand Phone:</strong> 0800 44 22 35<br/>
+				<strong>International Phone:</strong> +617 3908 7295<br/>
+				<strong>International Fax:</strong> +617 3908 7158<br/>
+				<strong>Email:</strong> supporterresponse@endeavour.com.au<br/>
+
+				<h3>Customer Service Centre</h3>
+				Monday - Friday 8am - 8pm<br/>
+				Saturday 9am - 1pm EST<br/>
+				Closed public holidays.<br/>
+
+				<h3>Endeavour Foundation Head Office Address:</h3>
+				50 Southgate Avenue, Cannon Hill, QLD 4170, Australia.
+				<h3>Postal Address:</h3>
+				Endeavour Foundation, PO Box 3578, Tingalpa DC QLD 4173, Australia.
+			</div>
+			<!-- END CONTACT DETAILS -->
+
+
+
+
+<!-- FORM SUBMIT QUERY -->
+<?php
+
+echo '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<h2>Contact Us: </h2>';
+
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('query', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+
+$this->formRow($form->get('name')->setAttribute('class', 'form-control input-lg'));
+$this->formRow($form->get('name')->setAttribute('placeholder', 'What is your name?'));
+echo $this->formRow($form->get('name')).'<br/>';
+
+$this->formRow($form->get('email')->setAttribute('class', 'form-control input-lg'));
+$this->formRow($form->get('email')->setAttribute('placeholder', 'What is your email?'));
+echo $this->formRow($form->get('email')).'<br/>';
+
+$this->formRow($form->get('comments')->setAttribute('class', 'form-control'));
+$this->formRow($form->get('comments')->setAttribute('placeholder', 'Type your question here...'));
+$this->formRow($form->get('comments')->setAttribute('style', 'height:200px; font-size:14pt;'));
+echo $this->formRow($form->get('comments')).'<br/>';
+
+$this->formSubmit($form->get('submit')->setAttribute('class', 'btn btn-success btn-lg'));
+$this->formSubmit($form->get('submit')->setAttribute('value', 'SUBMIT'));
+echo $this->formSubmit($form->get('submit'));
+
+echo $this->form()->closeTag();
+echo '</div>';
+?>
+<!-- END FORM SUBMIT QUERY -->
+
+	</fs>
+</div>
