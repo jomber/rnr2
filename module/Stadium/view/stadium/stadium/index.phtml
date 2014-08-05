@@ -11,7 +11,6 @@
     <a href="<?php echo $this->url('stadium', array('action'=>'add'));?>">Add new stadium</a>
   </p>
 
-
   <?php foreach ($stadiums as $stadium) : ?>
 
   <div class="col-md-3 col-xs-6">
@@ -45,13 +44,25 @@
 <!-- END COUNT OF REVIEWS -->
 
 <center>
-Reviews:<span class="badge"><?php echo $this->escapeHtml($stadium->id); ?></span><br/>
-Rating:
-<i class="fa fa-thumbs-up fa-1x" style="color: #70d900;"></i>
-<i class="fa fa-thumbs-up fa-1x" style="color: #70d900;"></i>
-<i class="fa fa-thumbs-up fa-1x" style="color: #70d900;"></i>
-<i class="fa fa-thumbs-down fa-1x" style="color: #d9534f;"></i>
-<i class="fa fa-thumbs-down fa-1x" style="color: #d9534f;"></i>
+Reviews:<span class="badge"><?php echo $this->escapeHtml($reviewsNumberArray[$reviewsCount]); ?></span><br/>
+<?php 
+	//$current = $averageReviewsArray[$reviewsCount]->current();			
+	//echo $this->escapeHtml($current->getAverage()); $reviewsCount++;
+	
+	$src = $averageReviewsArray[$reviewsCount];
+	$reviewsCount++;
+	
+	if($src != ""){
+		?>Rating: <img class="imgReviewAverageThumbs" src="<?php echo $src; ?>" alt="Very Good" >
+		<?php
+	}
+	else{//TODO create a div with a specific height and remove <br> and else statement
+		?>
+		<br>
+		<?php 
+	}
+?>
+
 </center>
 
 </div>
@@ -59,7 +70,6 @@ Rating:
 </div>
 
 <?php endforeach; ?>
-
 
 
 </div>

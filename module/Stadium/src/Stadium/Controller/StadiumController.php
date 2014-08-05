@@ -26,8 +26,23 @@ class StadiumController extends AbstractActionController
 
     public function indexAction()
     {
+    	$numItems = $this->getStadiumTable()->fetchAll()->count();
+
+    	$numReviewArray;
+    	$averageReviewsArray;
+    	
+    	for($i = 1; $i <= $numItems; $i++){
+    		$numReviewArray[] = $this->getReviewTable()->getNumberReviewByCategoryIdem(6, $i);
+    		$average = $this->getReviewTable()->getAverageReviewByCategoryIdem(6, $i);
+    		$currentAverage = $average->current()->getAverage();
+    		$averageReviewsArray[] = $this->averageThumbs($currentAverage);
+    	}
+
         return new ViewModel(array(
             'stadiums' => $this->getStadiumTable()->fetchAll(),
+        	'reviewsNumberArray' => $numReviewArray,
+        	'reviewsCount' => 0,
+        	'averageReviewsArray' => $averageReviewsArray,
         ));
     }
     
@@ -166,4 +181,33 @@ class StadiumController extends AbstractActionController
         ));
     }
 
+    
+    
+    //this function should be placed in a utility folder
+    /*
+     * Create a string path for the average thumbs
+     */
+    private function averageThumbs($average){
+    	 
+    	$averageString = "";
+    	switch ($average) {
+    		case 1:
+    			$averageString = "/img/icons/VeryBad.png";
+    			return $averageString;
+    		case 2:
+    			$averageString = "/img/icons/Bad.png";
+    			return $averageString;
+    		case 3:
+    			$averageString = "/img/icons/Satisfactory.png";
+    			return $averageString;
+    		case 4:
+    			$averageString = "/img/icons/Good.png";
+    			return $averageString;
+    		case 5:
+    			$averageString = "/img/icons/VeryGood.png";
+    			return $averageString;
+    		default:
+    			return "";
+    	}
+    }
 }

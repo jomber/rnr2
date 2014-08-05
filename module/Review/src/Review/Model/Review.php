@@ -17,6 +17,7 @@ class Review implements InputFilterAwareInterface
     protected $reviewdate;
     protected $photo;
     protected $publish;
+    protected $average;
     protected $first_name;//this field is retrieved from User Table
     
     protected $inputFilter;
@@ -33,6 +34,7 @@ class Review implements InputFilterAwareInterface
     	$this->photo     = (isset($data['photo'])) ? $data['photo'] : null;
     	$this->publish     = (isset($data['publish'])) ? $data['publish'] : null;
     	$this->first_name     = (isset($data['first_name'])) ? $data['first_name'] : null;
+    	$this->average     = (isset($data['average'])) ? $data['average'] : null;
     }
     
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -235,5 +237,14 @@ class Review implements InputFilterAwareInterface
     public function setFirstName($first_name) {
     	$this->first_name = $first_name;
     	return $this->first_name;
+    }
+    
+    public function getAverage() {
+    	return $this->average;
+    }
+    
+    public function setAverage($average) {
+    	$this->average = $average;
+    	return $this->average;
     }
 }

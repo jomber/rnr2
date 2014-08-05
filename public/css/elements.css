@@ -14,6 +14,11 @@ img.imgReviewThumbs{
 	width: 186px;
 }
 
+img.imgReviewAverageThumbs{
+	height: 25px;
+	width: 131px;
+}
+
 .radioReview {
     width: 0.75em;
     height: 0.75em;

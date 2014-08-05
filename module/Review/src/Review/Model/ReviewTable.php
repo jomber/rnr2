@@ -48,6 +48,39 @@ class ReviewTable
 		return $resultSet;
 	}
 	
+	/*
+	 * Retrieve the number of reviews in a particular category/item
+	 */
+	public function getNumberReviewByCategoryIdem($categoryId, $item)
+	{
+		$categoryId  = (int) $categoryId;
+		$item  = (int) $item;
+	
+		$select = new Select() ;
+		$select->from('review');
+		$select->columns(array('id'));
+		$select->where(array('categoryid' => $categoryId,'itemid'=> $item));
+	
+		$resultSet = $this->tableGateway->selectWith($select);
+		$reviewsNumber = $resultSet->count();
+		return $reviewsNumber;
+	}
+	
+	/*
+	 * Retrieve the average of reviews Category/Item
+	 */
+	public function getAverageReviewByCategoryIdem($categoryId, $item)
+	{
+		$categoryId  = (int) $categoryId;
+		$item  = (int) $item;
+		$select = new Select() ;
+		$select->from('review');
+		$select->columns(array(new \Zend\Db\Sql\Expression('ROUND(AVG(rating),0) as average')));
+		$select->where(array('categoryid' => $categoryId,'itemid'=> $item));
+		$resultSet = $this->tableGateway->selectWith($select);
+		
+		return $resultSet;
+	}
 	
 	public function saveReview(Review $review)
 	{
