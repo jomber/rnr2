@@ -1,5 +1,5 @@
 <?php
 
-   header( 'Location: http://rnr2.roveandrave.com.au/public/' ) ;
+   header( 'Location: http://localhost:8888/rnr2/public/' ) ;
 
 ?>
