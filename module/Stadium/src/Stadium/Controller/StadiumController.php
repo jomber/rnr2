@@ -3,7 +3,6 @@ namespace Stadium\Controller;
 
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\View\Model\ViewModel;
 use Stadium\Model\Stadium;
 use Stadium\Form\StadiumForm;
@@ -26,11 +25,14 @@ class StadiumController extends AbstractActionController
 
     public function indexAction()
     {
+    	$categoryid = 6;
+    	
         return new ViewModel(array(
             'stadiums' => $this->getStadiumTable()->fetchAll(),
+      //		'stadiums' => $this->getStadiumTable()->getStadiumsRev($categoryid),
         ));
     }
-    
+
     public function addAction()
     {
         $form = new StadiumForm();
@@ -155,14 +157,10 @@ class StadiumController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $categoryid = 6;
-        $form = $this->forward()->dispatch('Review/Controller/Review', array(
-        		'action' => 'add'
-        ));
         
         return new ViewModel(array(
             'stadium' => $this->getStadiumTable()->getStadium($id),
         	'reviewsByItem' => $this->getReviewTable()->getReviewByCategoryIdem($categoryid, $id),
-        	'form' => $form->form,
         ));
     }
 

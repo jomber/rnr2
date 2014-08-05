@@ -32,6 +32,20 @@ class ReviewTable
 		return $resultSet;
 	}
 	
+	/*public function getReviewByCategoryIdem($categoryId, $item)
+	{
+		$categoryId  = (int) $categoryId;
+		$item  = (int) $item;
+		
+		$where = new Where();
+		$where->like('categoryid', $categoryId);
+		$where->like('itemid', $item);
+		
+		$resultSet = $this->tableGateway->select($where);
+		
+		return $resultSet;
+	}*/
+	
 	public function getReviewByCategoryIdem($categoryId, $item)
 	 {
 		$categoryId  = (int) $categoryId;
@@ -57,9 +71,9 @@ class ReviewTable
 				'reviewedby' => $review->getReviewedBy(),
 				'comments' => $review->getComments(),
 				'rating' => $review->getRating(),
-				//'reviewdate' => $review->getReviewDate(),
-				//'photo' => $review->getPhoto(),
-				//'publish' => $review->getPublish(),
+				'reviewdate' => $review->getReviewDate(),
+				'photo' => $review->getPhoto(),
+				'publish' => $review->getPublish(),
 		);
 	
 		$id = (int)$review->getId();

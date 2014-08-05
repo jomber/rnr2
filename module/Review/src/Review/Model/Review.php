@@ -1,12 +1,7 @@
 <?php
 namespace Review\Model;
 
-use Zend\InputFilter\Factory as InputFactory;     
-use Zend\InputFilter\InputFilter;                 
-use Zend\InputFilter\InputFilterAwareInterface;   
-use Zend\InputFilter\InputFilterInterface;       
-
-class Review implements InputFilterAwareInterface
+class Review
 {
     protected $id;
     protected $itemid;
@@ -19,7 +14,6 @@ class Review implements InputFilterAwareInterface
     protected $publish;
     protected $first_name;//this field is retrieved from User Table
     
-    protected $inputFilter;
 
     public function exchangeArray($data)
     {
@@ -33,84 +27,6 @@ class Review implements InputFilterAwareInterface
     	$this->photo     = (isset($data['photo'])) ? $data['photo'] : null;
     	$this->publish     = (isset($data['publish'])) ? $data['publish'] : null;
     	$this->first_name     = (isset($data['first_name'])) ? $data['first_name'] : null;
-    }
-    
-    public function setInputFilter(InputFilterInterface $inputFilter)
-    {
-    	throw new \Exception("Not used");
-    }
-    
-    public function getInputFilter()
-    {
-    	if (!$this->inputFilter) {
-    		$inputFilter = new InputFilter();
-    		$factory     = new InputFactory();
-    
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'id',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'Int'),
-    				),
-    		)));
-    
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'itemid',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'Int'),
-    				),
-    		)));
-    		
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'categoryid',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'Int'),
-    				),
-    		)));
-    		
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'reviewedby',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'Int'),
-    				),
-    		)));
-    		
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'rating',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'Int'),
-    				),
-    		)));
-    		
-    		$inputFilter->add($factory->createInput(array(
-    				'name'     => 'comments',
-    				'required' => true,
-    				'filters'  => array(
-    						array('name' => 'StripTags'),
-    						array('name' => 'StringTrim'),
-    				),
-    				'validators' => array(
-    						array(
-    								'name'    => 'StringLength',
-    								'options' => array(
-    										'encoding' => 'UTF-8',
-    										'min'      => 1,
-    										'max'      => 500,
-    								),
-    						),
-    				),
-    		)));
-    
-    		
-    		    
-    		$this->inputFilter = $inputFilter;
-    	}
-    
-    	return $this->inputFilter;
     }
     
 /*    public function __construct(array $options = null) {

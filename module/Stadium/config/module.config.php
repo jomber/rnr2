@@ -28,7 +28,6 @@ return array(
     'view_manager' => array(
         'template_path_stack' => array(
             'stadium' => __DIR__ . '/../view',
-        	'/review/review/add'  => __DIR__ . '/../view/review/review/add.phtml',
         ),
     ),
 );
