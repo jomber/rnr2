@@ -34,9 +34,11 @@ return array(
 
             array(
                  'label' => '<i class="fa fa-fax fa-2x"></i>'.' CONTACT',
-                 'route' => 'contact',
-                 'resource' => 'Application\Controller\Index',
-                 'privilege' => 'contact',
+                 'route' => 'query',
+                 'controller' => 'Query',
+                 'action'     => 'add',
+                 'resource' => 'Query\Controller\Query',
+                 'privilege' => 'add',
              ),
 
             array(

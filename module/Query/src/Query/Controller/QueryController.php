@@ -41,7 +41,6 @@ class QueryController extends AbstractActionController
                 $query->exchangeArray($form->getData());
                 $this->getQueryTable()->saveQuery($query);
 
-                // Redirect to list of Stadiums
                 return $this->redirect()->toRoute('query');
             }
         }

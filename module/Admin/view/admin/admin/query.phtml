@@ -6,8 +6,8 @@ $this->headTitle ( $title );
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" style="height: 40px;" role="tablist">
-  <li class="active"><a href="#reviews" role="tab" data-toggle="tab">Reviews</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li ><a href="../../" role="tab" data-toggle="tab">Reviews</a></li>
+  <li class="active"><a href="#" role="tab" data-toggle="tab">Queries</a></li>
   <li><a href="#messages" role="tab" data-toggle="tab">Users</a></li>
   <li><a href="#settings" role="tab" data-toggle="tab">Statistics</a></li>
 </ul>
@@ -19,7 +19,7 @@ $this->headTitle ( $title );
 <div class="tab-content">
 
 <!-- TAB REVIEWS -->
-  <div class="tab-pane active" id="reviews">
+  <div class="tab-pane active" id="queries">
   
   <div class="btn-group btn-group-lg">
   <button type="button" class="btn btn-primary">New</button>
@@ -33,26 +33,21 @@ $this->headTitle ( $title );
 
 	<table class="table">
 		<tr>
-			<td><strong>UserID</strong></td>
-			<td><strong>Date</strong></td>
+			<td><strong>Name</strong></td>
+			<td><strong>Email</strong></td>
 			<td><strong>Comments</strong></td>
-			<td><strong>Category</strong></td>
-			<td><strong>Options</strong></td>
 		</tr>
 
-<?php foreach ($reviews as $review) : ?>
+<?php foreach ($queries as $query) : ?>
 		<tr>
 			<td>
-			<?php echo $this->escapeHtml($review->getReviewedBy()); ?>
+			<?php echo $this->escapeHtml($query->getName()); ?>
 			</td>
 			<td>
-			<?php echo $this->escapeHtml($review->getReviewdate()); ?>
+			<?php echo $this->escapeHtml($query->getEmail()); ?>
 			</td>
 			<td>
-			<?php echo $this->escapeHtml($review->getComments()); ?>
-			</td>
-			<td>
-			<?php echo $this->escapeHtml($review->getCategoryId()); ?>
+			<?php echo $this->escapeHtml($query->getComments()); ?>
 			</td>
 			<td>
 			<a href="#" onClick="#"><i class="fa fa-check-circle-o fa-2x"></i>Approve</a>

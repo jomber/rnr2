@@ -3,12 +3,15 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Query\Form\QueryForm;
+use Query\Model\Query;
 
 class AdminController extends AbstractActionController
 {
 	protected $adminTable;
 	protected $stadiumTable;
 	protected $reviewTable;
+    protected $queryTable;
 	protected $userTable;
 	
 	public function indexAction()
@@ -63,9 +66,9 @@ class AdminController extends AbstractActionController
     {
         if (!$this->queryTable) {
             $sm = $this->getServiceLocator();
-            $this->queryTable = $sm->get('Admin\Model\QueryTable');
+            $this->queryTable = $sm->get('Query\Model\QueryTable');
         }
-        return $this->reviewTable;
+        return $this->queryTable;
     }
     
     

@@ -13,6 +13,7 @@ class Query implements InputFilterAwareInterface
 	public $name;
 	public $email;
 	public $comments;
+
 	protected $inputFilter;
 	
 	
@@ -102,11 +103,6 @@ public function setInputFilter(InputFilterInterface $inputFilter)
             )));
 
 
-
-
-
-
-
             $this->inputFilter = $inputFilter;
         }
 
@@ -117,6 +113,54 @@ public function setInputFilter(InputFilterInterface $inputFilter)
     {
         return get_object_vars($this);
     }
+
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+
+    public function getName() {
+        return $this->comments;
+    }
+    
+    public function setName($comments) {
+        $this->comments = $comments;
+        return $this;
+    }
+
+    public function getEmail() {
+        return $this->comments;
+    }
+    
+    public function setEmail($comments) {
+        $this->comments = $comments;
+        return $this;
+    }
+
+    public function getComments() {
+        return $this->comments;
+    }
+    
+    public function setComments($comments) {
+        $this->comments = $comments;
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

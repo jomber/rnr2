@@ -1,25 +1,17 @@
+<div class="btn-group btn-group-lg">
+	<a class="btn btn-default pull-left" href="/rnr2/public/adm/">Admin home</a>
+	<a class="btn btn-default pull-left" href="./../">Reviews</a>
+	<a class="btn btn-default pull-left" href="/rnr2/public/adm/query">Queries</a>
+</div>
+
 <?php
+
 $title = 'Admin Page';
 $this->headTitle ( $title );
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" style="height: 40px;" role="tablist">
-  <li class="active"><a href="#reviews" role="tab" data-toggle="tab">Reviews</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" role="tab" data-toggle="tab">Users</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Statistics</a></li>
-</ul>
-<!-- END Nav tabs -->
-<br/>
-<br/>
 
-<!-- Tab panes -->
-<div class="tab-content">
-
-<!-- TAB REVIEWS -->
-  <div class="tab-pane active" id="reviews">
   
   <div class="btn-group btn-group-lg">
   <button type="button" class="btn btn-primary">New</button>
@@ -67,10 +59,5 @@ $this->headTitle ( $title );
 </div>
 <!-- END TAB REVIEWS -->  
   
-  
-  
-  
-  <div class="tab-pane" id="profile">.2..</div>
-  <div class="tab-pane" id="messages">.3..</div>
-  <div class="tab-pane" id="settings">.4..</div>
+
 </div>
