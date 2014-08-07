@@ -119,7 +119,7 @@ class Stadium implements InputFilterAwareInterface
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 100,s
+                            'max'      => 100,
                         ),
                     ),
                 ),

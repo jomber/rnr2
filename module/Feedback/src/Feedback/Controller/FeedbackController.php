@@ -54,9 +54,36 @@ class FeedbackController extends AbstractActionController
     	
     }
 
+
     public function deleteAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('feedback');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->getFeedbackTable()->deleteFeedback($id);
+            }
+
+            // Redirect to list of feedbacks
+            return $this->redirect()->toRoute('feedback');
+        }
+
+        return array(
+            'id'    => $id,
+            'feedback' => $this->getFeedbackTable()->getFeedback($id)
+        );
     }
+
+
+
+
     
     public function getFeedbackTable()
     {

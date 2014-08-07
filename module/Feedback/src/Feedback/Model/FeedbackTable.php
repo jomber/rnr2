@@ -23,9 +23,19 @@ class FeedbackTable
 
     public function getFeedback($id)
     {
-        $id  = (int) $id;
+/*        $id  = (int) $id;
         $resultSet = $this->tableGateway->select(array('id' => $id));
         return $resultSet;
+*/
+
+
+        $id  = (int) $id;
+        $rowset = $this->tableGateway->select(array('id' => $id));
+        $row = $rowset->current();
+        if (!$row) {
+            throw new \Exception("Could not find row $id");
+        }
+        return $row;
     }
 
     public function saveFeedback(Feedback $feedback)
@@ -36,7 +46,7 @@ class FeedbackTable
             'comments'  => $feedback->comments,
         );
 
-        $id = (int)$feedback->id;
+        $id = (int)$feedback->getId();
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
@@ -46,6 +56,11 @@ class FeedbackTable
                 throw new \Exception('Form id does not exist');
             }
         }
+    }
+
+        public function deleteFeedback($id)
+    {
+        $this->tableGateway->delete(array('id' => $id));
     }
 
 }

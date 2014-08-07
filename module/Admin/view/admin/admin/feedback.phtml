@@ -24,8 +24,16 @@ $this->headTitle ( $title );
 			<td><strong>Comments</strong></td>
 		</tr>
 
-<?php foreach ($feedbacks as $feedback) : ?>
+<?php foreach ($feedbacks as $feedback) : 
+
+$id = $feedback->getId();?>
+
+<form id='feedback<?php echo "$id"?>' method="POST">
+
 		<tr>
+			<td>
+			<?php echo $id; ?>
+			</td>
 			<td>
 			<?php echo $this->escapeHtml($feedback->getName()); ?>
 			</td>
@@ -38,10 +46,37 @@ $this->headTitle ( $title );
 			<td>
 			<a href="#" onClick="#"><i class="fa fa-check-circle-o fa-2x"></i>Approve</a>
 			<a href="#" onClick="#"><i class="fa fa-times-circle-o fa-2x"></i>Cancel</a>
-			<a href="#" onClick="#"><i class="fa fa-trash-o fa-2x"></i>Delete</a>		
+			<a onClick="<?php echo '!!!!!' ?>"><i class="fa fa-trash-o fa-2x"></i>Delete</a>
+
+			<div class="btn-group btn-group-lg">
+
+
+			<button name='del<?php echo "$id"?>' type="submit" class="btn"><i class="fa fa-trash-o fa-2x"></i>del</button>
+			</div>
+
 			</td>
 		</tr>
+
+</form>
 <?php endforeach; ?>
 	</table>
+
+<?
+if(isset($_POST['del1']))
+{
+echo $id;
+
+         $request = $this->getRequest();
+         if ($request->isPost())
+         {
+         $this->getFeedbackTable()->deleteFeedback($id);
+         }
+
+
+
+}
+?>
+
+
 </div>
 <!-- END REVIEWS TABLE-->

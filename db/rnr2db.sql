@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 24, 2014 at 06:39 AM
+-- Generation Time: Aug 07, 2014 at 11:08 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
@@ -70,6 +70,28 @@ INSERT INTO `category` (`id`, `title`, `colour`) VALUES
 (4, 'Libraries', 2),
 (5, 'Cinemas', 23),
 (6, 'Stadiums', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `comments` varchar(900) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `name`, `email`, `comments`) VALUES
+(1, '123', '123', '123'),
+(3, '112323123', '12312312', '123123123123');
 
 -- --------------------------------------------------------
 
@@ -181,7 +203,7 @@ CREATE TABLE `review` (
   PRIMARY KEY (`id`),
   KEY `reviewedby_idx` (`reviewedby`),
   KEY `categoryid_idx` (`categoryid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `review`
@@ -190,7 +212,11 @@ CREATE TABLE `review` (
 INSERT INTO `review` (`id`, `itemid`, `categoryid`, `rating`, `comments`, `reviewedby`, `reviewdate`, `photo`, `publish`) VALUES
 (1, 1, 1, 5, 'Good one', 1, '0000-00-00 00:00:00', '', 0),
 (2, 1, 6, 5, 'Amazing Stuff', 1, '2014-01-01 00:00:00', '', 0),
-(3, 2, 6, 4, 'Pretty Good', 1, '2014-01-01 00:00:00', '', 1);
+(3, 2, 6, 4, 'Pretty Good', 1, '2014-01-01 00:00:00', '', 1),
+(4, 2, 6, 1, 'I do not like this one ((', 1, '2014-01-01 00:00:00', '', 1),
+(5, 3, 6, 1, 'Test review', 1, '0000-00-00 00:00:00', '', 0),
+(6, 4, 6, 4, 'Normal', 1, '0000-00-00 00:00:00', '', 0),
+(7, 5, 6, 1, 'Shit!', 1, '0000-00-00 00:00:00', '', 0);
 
 -- --------------------------------------------------------
 
@@ -324,14 +350,16 @@ CREATE TABLE `user` (
   KEY `IDX_8D93D6495D83CC1` (`state_id`),
   KEY `IDX_8D93D6491E27F6BF` (`question_id`),
   KEY `search_idx` (`username`,`first_name`,`last_name`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `role_id`, `language_id`, `state_id`, `question_id`, `username`, `first_name`, `last_name`, `email`, `password`, `answer`, `picture`, `registration_date`, `registration_token`, `email_confirmed`) VALUES
-(1, 3, 1, 2, 3, 'RomanY', 'Roman', 'Yagovkin', 'r.yagovkin@gmail.com', '$2y$10$eYMzbcfyVtxew0hzep4s2OYXdf3ZaLc.Uw/NTyRnknB7ElCPOUY9S', 'permcity', NULL, '2014-07-16 08:40:06', '3cf84eca3bef592dd835dbd943c1bcea', 1);
+(1, 3, 1, 2, 3, 'RomanY', 'Roman', 'Yagovkin', 'r.yagovkin@gmail.com', '$2y$10$eYMzbcfyVtxew0hzep4s2OYXdf3ZaLc.Uw/NTyRnknB7ElCPOUY9S', 'permcity', NULL, '2014-07-16 08:40:06', '3cf84eca3bef592dd835dbd943c1bcea', 1),
+(2, 2, 1, 2, 3, 'administrator', 'Captain', 'Desomorphine', 'xdesomorphinex@gmail.com', '$2y$10$owIFVugkqj9fZ0.F85/WW.4qvaMHqwfmwuKsxt0MKQ6qgNHYTo3q6', 'brissie', NULL, '2014-07-31 12:38:50', '68703de060a4fef0e37d08fa11c20f41', 1),
+(3, 2, 1, 1, 3, 'RomanOfficial', 'Roman', 'Official', 'roman@official.com.au', '$2y$10$/Td8mwTd3/XVzxzNZrjp1uqDpA0OPJOMsQzjdPVasun6hICNubcLO', 'wefwef', NULL, '2014-07-31 13:00:10', '612227ab6b3763a83a4af3692fb9b2df', 0);
 
 --
 -- Constraints for dumped tables

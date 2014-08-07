@@ -7,18 +7,19 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <p>Are you sure that you want to delete
-    '<?php echo $this->escapeHtml($stadium->title); ?>' in
-    '<?php echo $this->escapeHtml($stadium->address); ?>'?
+    '<?php echo $this->escapeHtml($feedback->id); ?>' in
+    '<?php echo $this->escapeHtml($feedback->comments); ?>'?
+
 </p>
 <?php
-$url = $this->url('stadium', array(
+$url = $this->url('feedback', array(
     'action' => 'delete',
     'id'     => $this->id,
 ));
 ?>
 <form action="<?php echo $url; ?>" method="post">
 <div>
-    <input type="hidden" name="id" value="<?php echo (int) $stadium->id; ?>" />
+    <input type="hidden" name="id" value="<?php echo (int) $feedback->id; ?>" />
     <input type="submit" name="del" value="Yes" />
     <input type="submit" name="del" value="No" />
 </div>

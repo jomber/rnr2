@@ -29,14 +29,11 @@ class AdminController extends AbstractActionController
     }
 
     public function feedbackAction()
-    {
+    {   
         return new ViewModel(array(
                 'feedbacks' => $this->getFeedbackTable()->fetchAll(),
         ));
     }
-
-
-
 
 
     public function addAction()

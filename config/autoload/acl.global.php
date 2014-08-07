@@ -167,6 +167,7 @@ return array(
 				'Feedback\Controller\Feedback' => array(
 						'index'   => 'guest',
 						'add'   => 'guest',
+						'delete'=> 'admin',
 
 				),
 				//	END Admin ACL
