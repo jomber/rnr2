@@ -1,13 +1,3 @@
-input.multiCheck{
-	
-}
-
-.withcolor{
-	color:red;
-}
-#sampleform{
-	background-color:blue;
-}
 
 img.imgReviewThumbs{
 	height: 38px;
@@ -28,4 +18,8 @@ img.imgReviewAverageThumbs{
 	width: 100%;
 	height: 200px;
 	margin-top: 1em;
+}
+
+.loginRequest{
+	min-height: 300px;
 }

@@ -79,10 +79,6 @@
     <i class="fa fa-pencil fa-2x"></i> Post Review
   </button>
 </p>  
-
-
-
-
   <!-- Modal REVIEW -->
   <div class="modal fade bs-example-modal-lg" id="modalReview<?php echo $this->escapeHtml($stadium->id);?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -94,43 +90,22 @@
         
         <?php 
         
-        echo $this->partial('/review/review/add.phtml',
-        		array('place' => $stadium, 'form' => $form, 'category' => 6));
+        if ($user = $this->identity()) {
         
+        	$userId = $this->escapeHtml($user->getId());
+        	echo $this->partial('/review/review/add.phtml',
+        			array('place' => $stadium, 'form' => $form, 'category' => 6, 'userId' =>$userId));
+        	
+        } else {
+        	//throw new Exception('Not logged in');
+        	echo '<div class="loginRequest"><b>Please Login</b> <br>Login form must be here!</div>';
+        }
         ?>
         
       </div>
     </div>
   </div>
   <!-- END Modal REVIEW -->
-
-  <?php /*
-  function postReview($itemid, $rating, $comments, $reviewedby, $date)
-  {
-    try  
-    { 
-      $stmt = $pdo->prepare(
-
-        'INSERT INTO review (itemid, rating, comments, reviewedby, reviewdate)
-        VALUES (:revieweditemid, :rating, :comments, :reviewedby, :reviewdate)'
-        ); 
-
-      $stmt->bindValue(':itemid', $itemid);
-      $stmt->bindValue(':rating', $rating);
-      $stmt->bindValue(':comments', $comments);
-      $stmt->bindValue(':reviewedby', $reviewedby);
-      $stmt->bindValue(':reviewdate', $date);
-
-      $stmt->execute();
-
-    }
-    catch (PDOException $e) 
-    { 
-      echo $e->getMessage(); 
-    }
-    echo "!!!";
-  }
-  */ ?>
 
   <br/>
   
