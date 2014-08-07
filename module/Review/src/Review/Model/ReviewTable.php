@@ -41,7 +41,7 @@ class ReviewTable
 		$select->from('review');
 		$select->columns(array('id','rating','comments','reviewdate'));
 		$select->join('user', "user.id = review.reviewedby", array('first_name'), 'left');
-		$select->where(array('categoryid' => $categoryId,'itemid'=> $item));
+		$select->where(array('categoryid' => $categoryId,'itemid'=> $item, 'publish' => 1));
 				
 		$resultSet = $this->tableGateway->selectWith($select);
 		
@@ -59,7 +59,7 @@ class ReviewTable
 		$select = new Select() ;
 		$select->from('review');
 		$select->columns(array('id'));
-		$select->where(array('categoryid' => $categoryId,'itemid'=> $item));
+		$select->where(array('categoryid' => $categoryId,'itemid'=> $item, 'publish' => 1));
 	
 		$resultSet = $this->tableGateway->selectWith($select);
 		$reviewsNumber = $resultSet->count();
