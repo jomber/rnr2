@@ -1,10 +1,6 @@
-<div class="btn-group btn-group-lg">
-	<a class="btn btn-default pull-left" href="/rnr2/public/adm/">Admin home</a>
-	<a class="btn btn-default pull-left" href="./../">Reviews</a>
-	<a class="btn btn-default pull-left" href="/rnr2/public/adm/query">Queries</a>
-</div>
-
 <?php
+
+include 'inc/adminNav.inc';
 
 $title = 'Admin Page';
 $this->headTitle ( $title );
@@ -12,52 +8,18 @@ $this->headTitle ( $title );
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 
-  
-  <div class="btn-group btn-group-lg">
-  <button type="button" class="btn btn-primary">New</button>
-  <button type="button" class="btn btn-primary">All</button>
-</div>
-<br/>
-<br/>
 
-<!-- REVIEWS TABLE-->
-<div class="panel panel-default">
-
-	<table class="table">
-		<tr>
-			<td><strong>UserID</strong></td>
-			<td><strong>Date</strong></td>
-			<td><strong>Comments</strong></td>
-			<td><strong>Category</strong></td>
-			<td><strong>Options</strong></td>
-		</tr>
-
-<?php foreach ($reviews as $review) : ?>
-		<tr>
-			<td>
-			<?php echo $this->escapeHtml($review->getReviewedBy()); ?>
-			</td>
-			<td>
-			<?php echo $this->escapeHtml($review->getReviewdate()); ?>
-			</td>
-			<td>
-			<?php echo $this->escapeHtml($review->getComments()); ?>
-			</td>
-			<td>
-			<?php echo $this->escapeHtml($review->getCategoryId()); ?>
-			</td>
-			<td>
-			<a href="#" onClick="#"><i class="fa fa-check-circle-o fa-2x"></i>Approve</a>
-			<a href="#" onClick="#"><i class="fa fa-times-circle-o fa-2x"></i>Cancel</a>
-			<a href="#" onClick="#"><i class="fa fa-trash-o fa-2x"></i>Delete</a>		
-			</td>
-		</tr>
-<?php endforeach; ?>
-	</table>
-</div>
-<!-- END REVIEWS TABLE-->
-</div>
-<!-- END TAB REVIEWS -->  
-  
-
+<div class="row">
+				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+					<div id="itemInfo" class="panel panel-default">
+						<h3>New Reviews: <span class="badge">1</span></h3>
+						<h3>New Feedback: <span class="badge">1</span></h3>
+						<h3>More.. <span class="badge">1</span></h3>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+					<div id="itemInfo" class="panel panel-default">
+						More..
+					</div>
+				</div>
 </div>

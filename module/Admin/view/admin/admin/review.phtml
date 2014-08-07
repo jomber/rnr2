@@ -1,0 +1,52 @@
+<?php
+
+include 'inc/adminNav.inc';
+
+$title = 'Admin Page: Reviews';
+$this->headTitle ( $title );
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+  
+  <div class="btn-group btn-group-lg">
+  <button type="button" class="btn btn-primary">New</button>
+  <button type="button" class="btn btn-primary">All</button>
+</div>
+<br/>
+<br/>
+
+<!-- REVIEWS TABLE-->
+<div class="panel panel-default">
+
+	<table class="table">
+		<tr>
+			<td><strong>UserID</strong></td>
+			<td><strong>Date</strong></td>
+			<td><strong>Comments</strong></td>
+			<td><strong>Category</strong></td>
+			<td><strong>Options</strong></td>
+		</tr>
+
+<?php foreach ($reviews as $review) : ?>
+		<tr>
+			<td>
+			<?php echo $this->escapeHtml($review->getReviewedBy()); ?>
+			</td>
+			<td>
+			<?php echo $this->escapeHtml($review->getReviewdate()); ?>
+			</td>
+			<td>
+			<?php echo $this->escapeHtml($review->getComments()); ?>
+			</td>
+			<td>
+			<?php echo $this->escapeHtml($review->getCategoryId()); ?>
+			</td>
+			<td>
+			<a href="#" onClick="#"><i class="fa fa-check-circle-o fa-2x"></i>Approve</a>
+			<a href="#" onClick="#"><i class="fa fa-times-circle-o fa-2x"></i>Cancel</a>
+			<a href="#" onClick="#"><i class="fa fa-trash-o fa-2x"></i>Delete</a>		
+			</td>
+		</tr>
+<?php endforeach; ?>
+	</table>
+</div>
+<!-- END REVIEWS TABLE-->

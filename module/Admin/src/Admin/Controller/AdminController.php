@@ -3,15 +3,15 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Query\Form\QueryForm;
-use Query\Model\Query;
+use Feedback\Form\FeedbackForm;
+use Feedback\Model\Feedback;
 
 class AdminController extends AbstractActionController
 {
 	protected $adminTable;
 	protected $stadiumTable;
 	protected $reviewTable;
-    protected $queryTable;
+    protected $feedbackTable;
 	protected $userTable;
 	
 	public function indexAction()
@@ -21,10 +21,17 @@ class AdminController extends AbstractActionController
     	));
     }
 
-    public function queryAction()
+    public function reviewAction()
     {
         return new ViewModel(array(
-                'queries' => $this->getQueryTable()->fetchAll(),
+                'reviews' => $this->getReviewTable()->fetchAll(),
+        ));
+    }
+
+    public function feedbackAction()
+    {
+        return new ViewModel(array(
+                'feedbacks' => $this->getFeedbackTable()->fetchAll(),
         ));
     }
 
@@ -62,13 +69,13 @@ class AdminController extends AbstractActionController
     	return $this->reviewTable;
     }
 
-    public function getQueryTable()
+    public function getFeedbackTable()
     {
-        if (!$this->queryTable) {
+        if (!$this->feedbackTable) {
             $sm = $this->getServiceLocator();
-            $this->queryTable = $sm->get('Query\Model\QueryTable');
+            $this->feedbackTable = $sm->get('Feedback\Model\FeedbackTable');
         }
-        return $this->queryTable;
+        return $this->feedbackTable;
     }
     
     

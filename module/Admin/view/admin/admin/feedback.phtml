@@ -1,0 +1,47 @@
+<?php
+
+include 'inc/adminNav.inc';
+
+$title = 'Admin Page: Feedback';
+$this->headTitle ( $title );
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+  
+  <div class="btn-group btn-group-lg">
+  <button type="button" class="btn btn-primary">New</button>
+  <button type="button" class="btn btn-primary">All</button>
+</div>
+<br/>
+<br/>
+
+<!-- REVIEWS TABLE-->
+<div class="panel panel-default">
+
+	<table class="table">
+		<tr>
+			<td><strong>Name</strong></td>
+			<td><strong>Email</strong></td>
+			<td><strong>Comments</strong></td>
+		</tr>
+
+<?php foreach ($feedbacks as $feedback) : ?>
+		<tr>
+			<td>
+			<?php echo $this->escapeHtml($feedback->getName()); ?>
+			</td>
+			<td>
+			<?php echo $this->escapeHtml($feedback->getEmail()); ?>
+			</td>
+			<td>
+			<?php echo $this->escapeHtml($feedback->getComments()); ?>
+			</td>
+			<td>
+			<a href="#" onClick="#"><i class="fa fa-check-circle-o fa-2x"></i>Approve</a>
+			<a href="#" onClick="#"><i class="fa fa-times-circle-o fa-2x"></i>Cancel</a>
+			<a href="#" onClick="#"><i class="fa fa-trash-o fa-2x"></i>Delete</a>		
+			</td>
+		</tr>
+<?php endforeach; ?>
+	</table>
+</div>
+<!-- END REVIEWS TABLE-->

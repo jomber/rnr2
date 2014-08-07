@@ -1,0 +1,72 @@
+<?php
+namespace Feedback\Controller;
+
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\View\Model\ViewModel;
+use Feedback\Form\FeedbackForm;
+use Feedback\Model\Feedback;
+
+use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Select;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Sql;
+
+
+
+class FeedbackController extends AbstractActionController
+{
+	protected $feedbackTable;
+	
+	public function indexAction()
+    {
+    	return new ViewModel(array(
+    			'feedbacks' => $this->getFeedbackTable()->fetchAll(),
+    	));
+    }
+    
+    public function addAction()
+    {
+        $form = new FeedbackForm();
+        $form->get('submit')->setValue('Add');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $feedback = new Feedback();
+            $form->setInputFilter($feedback->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $feedback->exchangeArray($form->getData());
+                $this->getFeedbackTable()->saveFeedback($feedback);
+
+                return $this->redirect()->toRoute('feedback');
+            }
+        }
+        return array('form' => $form);
+    }
+
+
+
+    public function editAction()
+    {
+    	
+    }
+
+    public function deleteAction()
+    {
+    }
+    
+    public function getFeedbackTable()
+    {
+    	if (!$this->feedbackTable) {
+    		$sm = $this->getServiceLocator();
+    		$this->feedbackTable = $sm->get('Feedback\Model\FeedbackTable');
+    	}
+    	return $this->feedbackTable;
+    }
+    
+    
+    
+}

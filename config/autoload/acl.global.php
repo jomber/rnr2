@@ -157,13 +157,14 @@ return array(
 				//	Admin ACL  
 				'Admin\Controller\Admin' => array(
 						'index'   => 'admin',
-						'query'   => 'admin',
+						'feedback'   => 'admin',
+						'review'   => 'admin',
 
 				),
 				//	END Admin ACL
 
 				//	Admin ACL  
-				'Query\Controller\Query' => array(
+				'Feedback\Controller\Feedback' => array(
 						'index'   => 'guest',
 						'add'   => 'guest',
 

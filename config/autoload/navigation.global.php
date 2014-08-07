@@ -34,10 +34,10 @@ return array(
 
             array(
                  'label' => '<i class="fa fa-fax fa-2x"></i>'.' CONTACT',
-                 'route' => 'query',
-                 'controller' => 'Query',
+                 'route' => 'feedback',
+                 'controller' => 'Feedback',
                  'action'     => 'add',
-                 'resource' => 'Query\Controller\Query',
+                 'resource' => 'Feedback\Controller\Feedback',
                  'privilege' => 'add',
              ),
 
